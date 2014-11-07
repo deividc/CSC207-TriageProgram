@@ -1,4 +1,4 @@
-package triage;
+package com.example.triage;
 import java.util.ArrayList;
 
 public class Patient

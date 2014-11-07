@@ -1,4 +1,4 @@
-package triage;
+package com.example.triage;
 
 public class InputOutputController
 {

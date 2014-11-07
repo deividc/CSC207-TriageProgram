@@ -1,6 +1,4 @@
-package com.triage;
-
-import com.example.triage.R;
+package com.example.triage;
 
 import android.app.Activity;
 import android.os.Bundle;
