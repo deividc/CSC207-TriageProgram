@@ -1,4 +1,4 @@
-package com.example.triage;
+package com.nurses.triage;
 
 public class Condition {
 	private String symptons;

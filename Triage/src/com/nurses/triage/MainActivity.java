@@ -1,4 +1,6 @@
-package com.example.triage;
+package com.nurses.triage;
+
+import com.example.triage.R;
 
 import android.app.Activity;
 import android.os.Bundle;
