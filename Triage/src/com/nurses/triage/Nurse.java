@@ -46,7 +46,7 @@ public class Nurse
         return false;
     }
     
-    public Patient viewPatientInfor(String healthCardNumber){
+    public Patient viewPatientInfo(String healthCardNumber){
         Patient tmp = new Patient();
         for (int i = 0; i < listOfPatients.size(); i++){
             tmp = listOfPatients.get(i);
@@ -57,16 +57,25 @@ public class Nurse
         return tmp;
     }
     
+    /*
+     * Record the list of patient
+     */
     public void savePatientsOnFile(){
         InputOutputController ioc = new InputOutputController(listOfPatients);
         ioc.savePatients("patient_records.txt");
     }
     
+    /*
+     * Record the list of condition
+     */
     public void saveConditionsOnFile(){
         InputOutputController ioc = new InputOutputController(listOfPatients);
         ioc.saveConditions("condition_records.txt");
     }
     
+    /*
+     * Read the list of patient of records and update the information in the memory.
+     */
     public void readPatientsFromFile(){
         InputOutputController ioc = new InputOutputController(listOfPatients);
         ioc.patientsFromFile("patient_records.txt");
@@ -77,7 +86,27 @@ public class Nurse
         ioc.conditionsFromFile("condition_records.txt");
     }
     
+    /*
+     * return a list of patients
+     * 
+     * @return      list of patients
+     */
     public ArrayList listOfPatients(){
         return listOfPatients.entireList();
+    }
+    
+    /*
+     * Search for the list of conditions through the health card number
+     */
+    public ArrayList conditionsOfPatient(String healthCardNumber) {
+        ArrayList tmp = new ArrayList();
+        
+        for(int i = 0; i < listOfPatients.size(); i++) {
+            if(healthCardNumber.equals(listOfPatients.get(i).getHealthCardNumber())) {
+                tmp = listOfPatients.get(i).getListOfCondition();
+            }
+        }
+        
+        return tmp;
     }
 }
