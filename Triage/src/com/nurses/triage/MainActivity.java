@@ -29,7 +29,8 @@ public class MainActivity extends Activity {
 			}
         	
         });
-        
+        /*
+         * Commenting out because not implemented in this phase.
         Button buttonListOfPatients = (Button) findViewById(R.id.buttonMainListOfPatients);
         buttonListOfPatients.setOnClickListener(new View.OnClickListener (){
 
@@ -39,6 +40,7 @@ public class MainActivity extends Activity {
 			}
         	
         });
+        */
     }
 
 
