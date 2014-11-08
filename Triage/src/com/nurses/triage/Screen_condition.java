@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class ScreenCondition extends Activity {
+public class Screen_condition extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

@@ -12,6 +12,7 @@ public final class R {
     }
     public static final class color {
         public static final int text_black=0x7f060000;
+        public static final int text_white=0x7f060001;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -28,60 +29,76 @@ public final class R {
         public static final int text_small_size=0x7f040002;
     }
     public static final class drawable {
-        public static final int field=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
-        public static final int triage_wallpaper=0x7f020002;
+        public static final int cross_bandaid=0x7f020000;
+        public static final int field=0x7f020001;
+        public static final int ic_launcher=0x7f020002;
+        public static final int triage_wallpaper=0x7f020003;
     }
     public static final class id {
-        public static final int TextViewBloodPressure=0x7f090003;
-        public static final int action_settings=0x7f090015;
-        public static final int button1=0x7f090014;
-        public static final int buttonCancel=0x7f090001;
-        public static final int buttonChangeTime=0x7f090002;
-        public static final int buttonNewPatCancel=0x7f090013;
-        public static final int buttonSave=0x7f090000;
-        public static final int buttonSavePatient=0x7f090012;
-        public static final int datePickerBirthdate=0x7f090011;
-        public static final int editText1=0x7f090010;
-        public static final int editText2=0x7f09000e;
-        public static final int editTextDyastolic=0x7f090006;
-        public static final int editTextHeartRate=0x7f09000b;
-        public static final int editTextSymptoms=0x7f090009;
-        public static final int editTextSystolic=0x7f090005;
-        public static final int editTextTemperature=0x7f090004;
-        public static final int textView1=0x7f09000f;
-        public static final int textViewHeartRate=0x7f090007;
-        public static final int textViewSymptoms=0x7f09000a;
-        public static final int textViewTemperature=0x7f090008;
-        public static final int textViewTime=0x7f09000d;
-        public static final int textViewTimeNow=0x7f09000c;
+        public static final int TextViewBloodPressure=0x7f090006;
+        public static final int action_settings=0x7f09001d;
+        public static final int button3=0x7f090002;
+        public static final int buttonCancel=0x7f090004;
+        public static final int buttonChangeTime=0x7f090005;
+        public static final int buttonMainListOfPatients=0x7f090001;
+        public static final int buttonMainSearchPatient=0x7f090000;
+        public static final int buttonNewPatCancel=0x7f090019;
+        public static final int buttonPatientCancel=0x7f090016;
+        public static final int buttonPatientNewCondition=0x7f09001c;
+        public static final int buttonPatientSave=0x7f09001b;
+        public static final int buttonSave=0x7f090003;
+        public static final int datePatientPickerBirthdate=0x7f090018;
+        public static final int editTextDyastolic=0x7f090009;
+        public static final int editTextHeartRate=0x7f09000e;
+        public static final int editTextPatientHealthCardNumber=0x7f090015;
+        public static final int editTextPatientName=0x7f090017;
+        public static final int editTextSymptoms=0x7f09000c;
+        public static final int editTextSystolic=0x7f090008;
+        public static final int editTextTemperature=0x7f090007;
+        public static final int linearLayout1=0x7f090011;
+        public static final int listViewListPatientsList=0x7f090014;
+        public static final int radioButtonListPatientsTimeOfArrival=0x7f090013;
+        public static final int radioButtonListPatientsUrgency=0x7f090012;
+        public static final int textViewHeartRate=0x7f09000a;
+        public static final int textViewPatientBirthdate=0x7f09001a;
+        public static final int textViewSymptoms=0x7f09000d;
+        public static final int textViewTemperature=0x7f09000b;
+        public static final int textViewTime=0x7f090010;
+        public static final int textViewTimeNow=0x7f09000f;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
         public static final int activity_screen_condition=0x7f030001;
-        public static final int activity_screen_patient=0x7f030002;
+        public static final int activity_screen_list_patients=0x7f030002;
+        public static final int activity_screen_patient=0x7f030003;
     }
     public static final class menu {
         public static final int main=0x7f080000;
         public static final int screen_condition=0x7f080001;
-        public static final int screen_patient=0x7f080002;
+        public static final int screen_list_patients=0x7f080002;
+        public static final int screen_patient=0x7f080003;
     }
     public static final class string {
         public static final int action_settings=0x7f050002;
         public static final int app_name=0x7f050000;
-        public static final int birthday_date=0x7f050005;
-        public static final int blood_pressure=0x7f05000b;
-        public static final int cancel=0x7f050007;
-        public static final int change_time=0x7f05000a;
-        public static final int heart_rate=0x7f05000d;
+        public static final int birthday_date=0x7f050006;
+        public static final int blood_pressure=0x7f05000c;
+        public static final int cancel=0x7f050008;
+        public static final int change_time=0x7f05000b;
+        public static final int heart_rate=0x7f05000e;
         public static final int hello_world=0x7f050001;
-        public static final int new_condition=0x7f05000f;
-        public static final int save=0x7f050006;
-        public static final int symptoms=0x7f050008;
-        public static final int temperature=0x7f050009;
-        public static final int time=0x7f05000c;
-        public static final int time_now=0x7f05000e;
+        public static final int list_of_patients=0x7f050014;
+        public static final int new_condition=0x7f050010;
+        public static final int order_by_time=0x7f050013;
+        public static final int order_by_urgency=0x7f050012;
+        public static final int save=0x7f050007;
+        public static final int search_patient=0x7f050011;
+        public static final int symptoms=0x7f050009;
+        public static final int temperature=0x7f05000a;
+        public static final int time=0x7f05000d;
+        public static final int time_now=0x7f05000f;
         public static final int title_activity_screen_condition=0x7f050004;
+        public static final int title_activity_screen_list_patients=0x7f050005;
         public static final int title_activity_screen_patient=0x7f050003;
     }
     public static final class style {

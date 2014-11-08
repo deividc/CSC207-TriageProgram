@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Triage</string>
+    <string name="app_name">Nurses Triage</string> 
+    
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     
     <string name="title_activity_screen_patient">Patient</string>
     <string name="title_activity_screen_condition">Condition</string>
+    <string name="title_activity_screen_list_patients">List of Patients</string>
     
     <string name="birthday_date">Birthday Date</string>
     <string name="save">Save</string>
@@ -18,8 +20,13 @@
     <string name="time">Time</string>
     <string name="heart_rate">Heart Rate</string>
     <string name="time_now">11-06-2014 23:19</string>
-    <color name="text_black">#000000</color>
-    <string name="new_condition">New Condition</string>
+	<string name="new_condition">New Condition</string>
+    <string name="search_patient">Search Patient</string>
+    <string name="order_by_urgency">Urgency</string>
+    <string name="order_by_time">Time of Arrival</string>
+    <string name="list_of_patients">List of Patients</string>
     
+    <color name="text_black">#000000</color>
+    <color name="text_white">#ffffff</color>
 
 </resources>

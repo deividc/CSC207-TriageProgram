@@ -3,9 +3,12 @@ package com.nurses.triage;
 import com.example.triage.R;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 
 public class MainActivity extends Activity {
@@ -14,6 +17,28 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        Nurse nurse = new Nurse();
+        
+        Button buttonSearchPatient = (Button) findViewById(R.id.buttonMainSearchPatient);
+        buttonSearchPatient.setOnClickListener(new View.OnClickListener (){
+
+			@Override
+			public void onClick(View v) {
+				startActivity(new Intent(MainActivity.this, Screen_patient.class));				
+			}
+        	
+        });
+        
+        Button buttonListOfPatients = (Button) findViewById(R.id.buttonMainListOfPatients);
+        buttonListOfPatients.setOnClickListener(new View.OnClickListener (){
+
+			@Override
+			public void onClick(View v) {
+				startActivity(new Intent(MainActivity.this, Screen_list_patients.class));				
+			}
+        	
+        });
     }
 
 

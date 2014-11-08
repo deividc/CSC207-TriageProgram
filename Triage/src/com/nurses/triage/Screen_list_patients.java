@@ -1,37 +1,27 @@
 package com.nurses.triage;
 
 import com.example.triage.R;
+import com.example.triage.R.id;
+import com.example.triage.R.layout;
+import com.example.triage.R.menu;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 
-public class Screen_patient extends Activity {
+public class Screen_list_patients extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_screen_patient);
-		
-		Button newCondition = (Button) findViewById(R.id.buttonPatientNewCondition);
-		newCondition.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				startActivity(new Intent(Screen_patient.this, Screen_condition.class));
-				
-			}
-		});
+		setContentView(R.layout.activity_screen_list_patients);
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.screen_patient, menu);
+		getMenuInflater().inflate(R.menu.screen_list_patients, menu);
 		return true;
 	}
 
