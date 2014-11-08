@@ -24,14 +24,6 @@
         android:paddingBottom="5dp"
         android:paddingTop="5dp" />
 
-    <Button
-        android:id="@+id/buttonPatientCancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:text="@string/cancel" />
-
     <EditText
         android:id="@+id/editTextPatientName"
         android:layout_width="wrap_content"
@@ -86,5 +78,14 @@
 	    android:layout_alignBottom="@+id/buttonPatientSave"
 	    android:layout_toLeftOf="@+id/buttonPatientSave"
 	    android:text="@string/new_condition" />
+
+	<Button
+	    android:id="@+id/buttonPatientCancel"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignRight="@+id/datePatientPickerBirthdate"
+	    android:layout_below="@+id/datePatientPickerBirthdate"
+	    android:layout_marginTop="10dp"
+	    android:text="@string/cancel" />
     
 </RelativeLayout>
