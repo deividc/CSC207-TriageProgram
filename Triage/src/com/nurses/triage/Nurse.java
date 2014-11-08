@@ -1,4 +1,10 @@
 package com.nurses.triage;
+/*
+ * @author  Deivid Cavalcante da Silva
+ * @version 1.0.2
+ * @date    2014-11-08
+ */
+
 import java.util.ArrayList;
 
 public class Nurse
@@ -9,8 +15,7 @@ public class Nurse
         listOfPatients = new ListOfPatients();
     }
     
-    public boolean newPatient(String healthCardNumber, String name, String birthdate)
-    {
+    public boolean newPatient(String healthCardNumber, String name, String birthdate){
         Patient tmp = new Patient();
         for(int i = 0; i < listOfPatients.size(); i++){
             tmp = listOfPatients.get(i);
@@ -26,14 +31,13 @@ public class Nurse
     }
     
     public boolean checkNewCondition(String healthCardNumber, String symptoms, float temperature, int bloodPressureDiastolic,
-    int bloodPressureSystolic, int heartRate, String arrivalDate, boolean seenByDoctor, long time)
-    {
+    int bloodPressureSystolic, int heartRate, String arrivalDate){
         Patient tmp = new Patient();
         for(int i = 0; i < listOfPatients.size(); i++)
         {
             tmp = listOfPatients.get(i);
             if (healthCardNumber.equals(tmp.getHealthCardNumber())){
-                Condition cond = new Condition(symptoms, temperature, bloodPressureDiastolic, bloodPressureSystolic, heartRate, arrivalDate, seenByDoctor, time);
+                Condition cond = new Condition(symptoms, temperature, bloodPressureDiastolic, bloodPressureSystolic, heartRate, arrivalDate);
                 tmp.newCondition(cond);
                 return true; //New condition added
             }
@@ -42,8 +46,7 @@ public class Nurse
         return false;
     }
     
-    public Patient viewPatientInfor(String healthCardNumber)
-    {
+    public Patient viewPatientInfor(String healthCardNumber){
         Patient tmp = new Patient();
         for (int i = 0; i < listOfPatients.size(); i++){
             tmp = listOfPatients.get(i);
@@ -54,20 +57,27 @@ public class Nurse
         return tmp;
     }
     
-    public void saveDataOnFile()
-    {
+    public void savePatientsOnFile(){
         InputOutputController ioc = new InputOutputController(listOfPatients);
-        ioc.saveData("patient_records.txt");
+        ioc.savePatients("patient_records.txt");
     }
     
-    public void readPatientsFromFile()
-    {
+    public void saveConditionsOnFile(){
+        InputOutputController ioc = new InputOutputController(listOfPatients);
+        ioc.saveConditions("condition_records.txt");
+    }
+    
+    public void readPatientsFromFile(){
         InputOutputController ioc = new InputOutputController(listOfPatients);
         ioc.patientsFromFile("patient_records.txt");
     }
     
-    public ArrayList listOfPatients()
-    {
+    public void readConditionsFromFile(){
+        InputOutputController ioc = new InputOutputController(listOfPatients);
+        ioc.conditionsFromFile("condition_records.txt");
+    }
+    
+    public ArrayList listOfPatients(){
         return listOfPatients.entireList();
     }
 }

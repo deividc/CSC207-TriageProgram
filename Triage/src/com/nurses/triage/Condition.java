@@ -1,7 +1,13 @@
 package com.nurses.triage;
+/*
+ * @author  Deivid Cavalcante da Silva
+ * @version 1.0.2
+ * @date    2014-11-08
+ */
 
-public class Condition {
-	private String symptons;
+public class Condition
+{
+    private String symptoms;
     private float temperature;
     private int bloodPressureDiastolic;
     private int bloodPressureSystolic;
@@ -11,98 +17,52 @@ public class Condition {
     private long time;
     
     public Condition(boolean seenByDoctor){
-        this.setSeenByDoctor(seenByDoctor);
+        this.seenByDoctor = seenByDoctor;
     }
     
     public Condition(String symptoms, float temperature, int bloodPressureDiastolic,
     int bloodPressureSystolic, int heartRate, String arrivalDate, boolean seenByDoctor, long time){
-        this.setSymptons(symptoms);
-        this.setTemperature(temperature);
-        this.setBloodPressureDiastolic(bloodPressureDiastolic);
-        this.setBloodPressureSystolic(bloodPressureSystolic);
-        this.setHeartRate(heartRate);
-        this.setArrivalDate(arrivalDate);
-        this.setSeenByDoctor(seenByDoctor);
-        this.setTime(time);
+        this.symptoms = symptoms;
+        this.temperature = temperature;
+        this.bloodPressureDiastolic = bloodPressureDiastolic;
+        this.bloodPressureSystolic = bloodPressureSystolic;
+        this.heartRate = heartRate;
+        this.arrivalDate = arrivalDate;
+        this.seenByDoctor = seenByDoctor;
+        this.time = time;
+    }
+    
+    public Condition(String symptoms, float temperature, int bloodPressureDiastolic,
+    int bloodPressureSystolic, int heartRate, String arrivalDate){
+        this.symptoms = symptoms;
+        this.temperature = temperature;
+        this.bloodPressureDiastolic = bloodPressureDiastolic;
+        this.bloodPressureSystolic = bloodPressureSystolic;
+        this.heartRate = heartRate;
+        this.arrivalDate = arrivalDate;
+        this.seenByDoctor = seenByDoctor;
+        DateTime dt = new DateTime();
+        this.time = dt.getEpoch();
     }
     
     public void symptons(String symptons){
-        this.setSymptons(symptons);
+        this.symptoms = symptons;
     }
     
     public void arrivalDate(String arrivalDate){
-        this.setArrivalDate(arrivalDate);
+        this.arrivalDate = arrivalDate;
     }
     
     public void seenByDoctor(boolean seenByDoctor){
-        this.setSeenByDoctor(seenByDoctor);
+        this.seenByDoctor = seenByDoctor;
     }
     
     public void time(long time){
-        this.setTime(time);
+        this.time = time;
     }
-
-	public String getSymptons() {
-		return symptons;
-	}
-
-	public void setSymptons(String symptons) {
-		this.symptons = symptons;
-	}
-
-	public float getTemperature() {
-		return temperature;
-	}
-
-	public void setTemperature(float temperature) {
-		this.temperature = temperature;
-	}
-
-	public int getBloodPressureDiastolic() {
-		return bloodPressureDiastolic;
-	}
-
-	public void setBloodPressureDiastolic(int bloodPressureDiastolic) {
-		this.bloodPressureDiastolic = bloodPressureDiastolic;
-	}
-
-	public int getBloodPressureSystolic() {
-		return bloodPressureSystolic;
-	}
-
-	public void setBloodPressureSystolic(int bloodPressureSystolic) {
-		this.bloodPressureSystolic = bloodPressureSystolic;
-	}
-
-	public int getHeartRate() {
-		return heartRate;
-	}
-
-	public void setHeartRate(int heartRate) {
-		this.heartRate = heartRate;
-	}
-
-	public String getArrivalDate() {
-		return arrivalDate;
-	}
-
-	public void setArrivalDate(String arrivalDate) {
-		this.arrivalDate = arrivalDate;
-	}
-
-	public boolean isSeenByDoctor() {
-		return seenByDoctor;
-	}
-
-	public void setSeenByDoctor(boolean seenByDoctor) {
-		this.seenByDoctor = seenByDoctor;
-	}
-
-	public long getTime() {
-		return time;
-	}
-
-	public void setTime(long time) {
-		this.time = time;
-	}
+    
+    public String toString(){
+        String tmp = symptoms + ";" + temperature + ";" + bloodPressureDiastolic + ";" + bloodPressureSystolic + ";" + heartRate + ";" + arrivalDate + ";" + seenByDoctor + ";" + time;
+        return tmp;
+    }
 }
