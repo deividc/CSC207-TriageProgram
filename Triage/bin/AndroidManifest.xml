@@ -35,6 +35,14 @@
             android:name="com.nurses.triage.Screen_list_patients"
             android:label="@string/title_activity_screen_list_patients" >
         </activity>
+        <activity
+            android:name="com.nurses.triage.Screen_list_conditions"
+            android:label="@string/title_activity_screen_list_conditions" >
+        </activity>
+        <activity
+            android:name=".Screen_change_time"
+            android:label="@string/title_activity_screen_change_time" >
+        </activity>
     </application>
 
 </manifest>

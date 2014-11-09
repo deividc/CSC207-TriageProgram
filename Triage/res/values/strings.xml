@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Nurses Triage</string> 
-    
+    <string name="app_name">Nurses Triage</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    
     <string name="title_activity_screen_patient">Patient</string>
     <string name="title_activity_screen_condition">Condition</string>
     <string name="title_activity_screen_list_patients">List of Patients</string>
-    
+    <string name="title_activity_screen_list_conditions">List of Conditions</string>
     <string name="birthday_date">Patient Birthday</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
@@ -17,16 +15,25 @@
     <string name="temperature">Temperature</string>
     <string name="change_time">Change Time</string>
     <string name="blood_pressure">Blood Pressure</string>
+    <string name="description_symptoms">Description of Symptoms</string>
+    <string name="celsius">Celsius</string>
+    <string name="systolic">Systolic</string>
+    <string name="diastolic">Diastolic</string>
     <string name="time">Time</string>
     <string name="heart_rate">Heart Rate</string>
-    <string name="time_now">11-06-2014 23:19</string>
-	<string name="new_condition">New Condition</string>
+    <string name="time_now">11-06-2014</string>
+    <string name="new_condition">New Condition</string>
     <string name="search_patient">Search Patient</string>
     <string name="order_by_urgency">Urgency</string>
     <string name="order_by_time">Time of Arrival</string>
     <string name="list_of_patients">List of Patients</string>
     <string name="patient_history">Patient History</string>
+    <string name="health_card_number">Health Card Number</string>
+    <string name="patient_name">Patient Name</string>
+
     <color name="text_black">#000000</color>
     <color name="text_white">#ffffff</color>
+
+    <string name="title_activity_screen_change_time">Screen_change_time</string>
 
 </resources>

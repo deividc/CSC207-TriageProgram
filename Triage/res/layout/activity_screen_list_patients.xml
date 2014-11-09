@@ -9,39 +9,37 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.nurses.triage.Screen_list_patients" >
 
-    <LinearLayout
-        android:id="@+id/linearLayout1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:paddingBottom="10dp" >
-
-        <RadioButton
-            android:id="@+id/radioButtonListPatientsUrgency"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="@string/order_by_urgency"
-            android:text="@string/order_by_urgency" />
-
-        <RadioButton
-            android:id="@+id/radioButtonListPatientsTimeOfArrival"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="21dp"
-            android:hint="@string/order_by_time"
-            android:text="@string/order_by_time" />
-
-    </LinearLayout>
-
     <ListView
         android:id="@+id/listViewListPatientsList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/linearLayout1"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/radioGroupListPatientOrdering"
         android:background="@color/text_white" >
 
     </ListView>
+
+    <RadioGroup
+        android:id="@+id/radioGroupListPatientOrdering"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true" >
+
+        <RadioButton
+            android:id="@+id/radioButtonListPatientsOrderByUrgency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/order_by_urgency" />
+
+        <RadioButton
+            android:id="@+id/radioButtonListPatientsOrderByTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/order_by_time" />
+
+    </RadioGroup>
 
 </RelativeLayout>

@@ -8,181 +8,181 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.nurses.triage.Screen_condition" >
-
+<!--
     <Button
-        android:id="@+id/buttonSave"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/buttonCancel"
-        android:layout_alignBottom="@+id/buttonCancel"
-        android:layout_toLeftOf="@+id/buttonCancel"
-        android:text="@string/save"
-        android:textSize="@dimen/text_medium_size" />
-
-    <Button
-        android:id="@+id/buttonChangeTime"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/buttonSave"
-        android:layout_alignBottom="@+id/buttonSave"
-        android:layout_toLeftOf="@+id/buttonSave"
-        android:text="@string/change_time"
-        android:textSize="@dimen/text_medium_size" />
-
-    <TextView
-        android:id="@+id/TextViewBloodPressure"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextTemperature"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:paddingBottom="10dp"
-        android:text="@string/blood_pressure"
-        android:textColor="@color/text_black"
-        android:textSize="@dimen/text_medium_size" />
-
-    <EditText
-        android:id="@+id/editTextSystolic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/TextViewBloodPressure"
-        android:background="#ffffff"
-        android:ems="10"
-        android:hint="Systolic"
-        android:inputType="number"
-        android:paddingBottom="5dp"
-        android:paddingTop="5dp"
-        android:textSize="@dimen/text_medium_size" />
-
-    <EditText
-        android:id="@+id/editTextDyastolic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/editTextSystolic"
-        android:layout_marginTop="8dp"
-        android:background="#ffffff"
-        android:ems="10"
-        android:hint="Dyastolic"
-        android:inputType="number"
-        android:paddingBottom="5dp"
-        android:paddingTop="5dp"
-        android:textSize="@dimen/text_medium_size" />
-
-    <TextView
-        android:id="@+id/textViewHeartRate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextDyastolic"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:paddingBottom="10dp"
-        android:text="@string/heart_rate"
-        android:textColor="@color/text_black"
-        android:textSize="@dimen/text_medium_size" />
-
-    <TextView
-        android:id="@+id/textViewTemperature"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextSymptoms"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:paddingBottom="10dp"
-        android:text="@string/temperature"
-        android:textColor="@color/text_black"
-        android:textSize="@dimen/text_medium_size" />
-
-    <TextView
-        android:id="@+id/textViewSymptoms"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textViewHeartRate"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="17dp"
-        android:paddingBottom="10dp"
-        android:text="@string/symptoms"
-        android:textColor="@color/text_black"
-        android:textSize="@dimen/text_medium_size" />
-
-    <EditText
-        android:id="@+id/editTextTemperature"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/textViewTemperature"
-        android:background="#ffffff"
-        android:ems="10"
-        android:hint="Celsius"
-        android:inputType="numberDecimal"
-        android:paddingBottom="5dp"
-        android:paddingTop="5dp"
-        android:textSize="@dimen/text_medium_size" />
-
-    <EditText
-        android:id="@+id/editTextHeartRate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/textViewHeartRate"
-        android:background="#ffffff"
-        android:ems="10"
-        android:hint="80"
-        android:inputType="number"
-        android:paddingBottom="5dp"
-        android:paddingTop="5dp"
-        android:textSize="@dimen/text_medium_size" />
-
-    <Button
-        android:id="@+id/buttonCancel"
+        android:id="@+id/buttonConditionCancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/editTextHeartRate"
         android:text="@string/cancel"
         android:textSize="@dimen/text_medium_size" />
+-->
 
     <TextView
-        android:id="@+id/textViewTimeNow"
+        android:id="@+id/textViewConditionSymptoms"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textViewTime"
-        android:layout_alignBottom="@+id/textViewTime"
-        android:layout_alignParentRight="true"
-        android:text="@string/time_now"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:paddingBottom="10dp"
+        android:paddingTop="15dp"
+        android:text="@string/symptoms"
         android:textColor="@color/text_black"
         android:textSize="@dimen/text_medium_size" />
 
     <EditText
-        android:id="@+id/editTextSymptoms"
+        android:id="@+id/editTextConditionSystolic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/textViewSymptoms"
+        android:layout_below="@+id/TextViewConditionBloodPressure"
         android:background="#ffffff"
         android:ems="10"
-        android:hint="Description of Symptoms"
-        android:inputType="text"
+        android:hint="@string/systolic"
+        android:inputType="number"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:textSize="@dimen/text_medium_size" />
+
+    <EditText
+        android:id="@+id/editTextConditionDyastolic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/editTextConditionSystolic"
+        android:layout_marginTop="12dp"
+        android:background="#ffffff"
+        android:ems="10"
+        android:hint="@string/diastolic"
+        android:inputType="number"
         android:paddingBottom="5dp"
         android:paddingTop="5dp"
         android:textSize="@dimen/text_medium_size" />
 
     <TextView
-        android:id="@+id/textViewTime"
+        android:id="@+id/textViewConditionHeartRate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/buttonChangeTime"
         android:layout_alignParentLeft="true"
-        android:layout_marginBottom="14dp"
+        android:layout_below="@+id/editTextConditionDyastolic"
+        android:paddingBottom="10dp"
+        android:paddingTop="15dp"
+        android:text="@string/heart_rate"
+        android:textColor="@color/text_black"
+        android:textSize="@dimen/text_medium_size" />
+
+    <EditText
+        android:id="@+id/editTextConditionHeartRate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textViewConditionHeartRate"
+        android:background="#ffffff"
+        android:ems="10"
+        android:hint=""
+        android:inputType="number"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:textSize="@dimen/text_medium_size" />
+
+    <TextView
+        android:id="@+id/textViewConditionTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/editTextConditionHeartRate"
         android:minWidth="@dimen/text_medium_size"
+        android:paddingTop="15dp"
         android:text="@string/time"
+        android:textColor="@color/text_black"
+        android:textSize="@dimen/text_medium_size" />
+
+    <Button
+        android:id="@+id/buttonConditionSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="@string/save"
+        android:textSize="@dimen/text_medium_size" />
+
+    <Button
+        android:id="@+id/buttonConditionChangeTime"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/buttonConditionSave"
+        android:layout_alignBottom="@+id/buttonConditionSave"
+        android:layout_toRightOf="@+id/TextViewConditionBloodPressure"
+        android:text="@string/change_time"
+        android:textSize="@dimen/text_medium_size" />
+
+    <TextView
+        android:id="@+id/textViewConditionTimeNow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textViewConditionTime"
+        android:layout_alignBottom="@+id/textViewConditionTime"
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@+id/textViewConditionTime"
+        android:text="@string/time_now"
+        android:textColor="@color/text_black"
+        android:textSize="@dimen/text_medium_size" />
+
+    <TextView
+        android:id="@+id/textViewConditionTemperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/editTextConditionSymptoms"
+        android:paddingBottom="10dp"
+        android:paddingTop="15dp"
+        android:text="@string/temperature"
+        android:textColor="@color/text_black"
+        android:textSize="@dimen/text_medium_size" />
+
+    <EditText
+        android:id="@+id/editTextConditionSymptoms"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textViewConditionSymptoms"
+        android:background="#ffffff"
+        android:ems="10"
+        android:hint="@string/description_symptoms"
+        android:inputType="text"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:textSize="@dimen/text_medium_size" />
+
+    <EditText
+        android:id="@+id/editTextConditionTemperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textViewConditionTemperature"
+        android:background="@color/text_white"
+        android:ems="10"
+        android:hint="@string/celsius"
+        android:inputType="numberSigned"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp" />
+
+    <TextView
+        android:id="@+id/TextViewConditionBloodPressure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/editTextConditionTemperature"
+        android:paddingBottom="10dp"
+        android:paddingTop="15dp"
+        android:text="@string/blood_pressure"
         android:textColor="@color/text_black"
         android:textSize="@dimen/text_medium_size" />
     
