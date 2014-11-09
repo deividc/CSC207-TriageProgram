@@ -10,7 +10,7 @@
     <string name="title_activity_screen_condition">Condition</string>
     <string name="title_activity_screen_list_patients">List of Patients</string>
     
-    <string name="birthday_date">Birthday Date</string>
+    <string name="birthday_date">Patient Birthday</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
     <string name="symptoms">Symptoms</string>
@@ -25,7 +25,7 @@
     <string name="order_by_urgency">Urgency</string>
     <string name="order_by_time">Time of Arrival</string>
     <string name="list_of_patients">List of Patients</string>
-    
+    <string name="patient_history">Patient History</string>
     <color name="text_black">#000000</color>
     <color name="text_white">#ffffff</color>
 

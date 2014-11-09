@@ -8,48 +8,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.nurses.triage.Screen_patient" >
-
-    <EditText
-        android:id="@+id/editTextPatientHealthCardNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="17dp"
-        android:background="#ffffff"
-        android:ems="10"
-        android:hint="Health Card Number"
-        android:inputType="number"
-        android:paddingBottom="5dp"
-        android:paddingTop="5dp" />
-
-    <EditText
-        android:id="@+id/editTextPatientName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/editTextPatientHealthCardNumber"
-        android:layout_marginTop="8dp"
-        android:background="#ffffff"
-        android:ems="10"
-        android:hint="Name"
-        android:inputType="textPersonName"
-        android:paddingBottom="5dp"
-        android:paddingTop="5dp" />
-
-    <DatePicker
-        android:id="@+id/datePatientPickerBirthdate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/buttonNewPatCancel"
-        android:layout_below="@+id/textViewPatientBirthdate"
-        android:layout_marginTop="15dp"
-        android:background="#ffffff"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp" />
-
+   
+<!--
     <TextView
         android:id="@+id/textViewPatientBirthdate"
         android:layout_width="wrap_content"
@@ -60,7 +20,7 @@
         android:paddingBottom="10dp"
         android:text="@string/birthday_date"
         android:textSize="@dimen/text_medium_size" />
-
+ 
 	<Button
 	    android:id="@+id/buttonPatientSave"
 	    android:layout_width="wrap_content"
@@ -69,23 +29,59 @@
 	    android:layout_alignBottom="@+id/buttonPatientCancel"
 	    android:layout_toLeftOf="@+id/buttonPatientCancel"
 	    android:text="@string/save" />
+    -->
 
-	<Button
-	    android:id="@+id/buttonPatientNewCondition"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_alignBaseline="@+id/buttonPatientSave"
-	    android:layout_alignBottom="@+id/buttonPatientSave"
-	    android:layout_toLeftOf="@+id/buttonPatientSave"
-	    android:text="@string/new_condition" />
+    <Button
+        android:id="@+id/buttonPatientHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="@string/patient_history" />
 
-	<Button
-	    android:id="@+id/buttonPatientCancel"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_alignRight="@+id/datePatientPickerBirthdate"
-	    android:layout_below="@+id/datePatientPickerBirthdate"
-	    android:layout_marginTop="10dp"
-	    android:text="@string/cancel" />
-    
+    <EditText
+        android:id="@+id/editTextPatientName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editTextPatientHealthCardNumber"
+        android:layout_below="@+id/editTextPatientHealthCardNumber"
+        android:background="#ffffff"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="textPersonName"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp" />
+
+    <EditText
+        android:id="@+id/editTextPatientHealthCardNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="#ffffff"
+        android:ems="10"
+        android:hint="Health Card Number"
+        android:inputType="number"
+        android:paddingBottom="10dp"
+        android:paddingTop="5dp" />
+
+    <Button
+        android:id="@+id/buttonPatientNewCondition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/buttonPatientHistory"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="14dp"
+        android:text="@string/new_condition" />
+
+    <DatePicker
+        android:id="@+id/datePatientPickerBirthdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/buttonPatientHistory"
+        android:layout_centerVertical="true"
+        android:background="#ffffff"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" />
+
 </RelativeLayout>
