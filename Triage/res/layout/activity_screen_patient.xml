@@ -8,77 +8,84 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.nurses.triage.Screen_patient" >
-   
 
-    <TextView
-        android:id="@+id/textViewPatientBirthdate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextPatientName"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="12dp"
-        android:paddingBottom="10dp"
-        android:text="@string/birthday_date"
-        android:textSize="@dimen/text_medium_size" />
-
-    <EditText
-        android:id="@+id/editTextPatientHealthCardNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:background="#ffffff"
-        android:ems="10"
-        android:hint="Health Card Number"
-        android:inputType="number"
-        android:paddingBottom="5dp"
-        android:paddingTop="5dp" />
-
-    <EditText
-        android:id="@+id/editTextPatientName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editTextPatientHealthCardNumber"
-        android:layout_alignRight="@+id/editTextPatientHealthCardNumber"
-        android:layout_below="@+id/editTextPatientHealthCardNumber"
-        android:layout_marginTop="15dp"
-        android:background="#ffffff"
-        android:ems="10"
-        android:hint="Name"
-        android:inputType="textPersonName"
-        android:paddingBottom="5dp"
-        android:paddingTop="5dp" >
-
-        <requestFocus />
-    </EditText>
-
-    <DatePicker
-        android:id="@+id/datePatientPickerBirthdate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/buttonPatientHistory"
-        android:layout_below="@+id/textViewPatientBirthdate"
-        android:background="#ffffff"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp" />
-
-    <Button
-        android:id="@+id/buttonPatientNewCondition"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/buttonPatientHistory"
-        android:layout_alignBottom="@+id/buttonPatientHistory"
-        android:layout_marginRight="10dp"
-        android:layout_toLeftOf="@+id/buttonPatientHistory"
-        android:text="@string/new_condition" />
-
-    <Button
-        android:id="@+id/buttonPatientHistory"
+    <ScrollView
+        android:id="@+id/scrollView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:text="@string/patient_history" />
+        android:layout_alignParentTop="true" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <EditText
+                android:id="@+id/editTextPatientHealthCardNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:ems="10"
+                android:hint="@string/health_card_number"
+                android:inputType="number"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp" >
+
+                <requestFocus />
+            </EditText>
+
+            <EditText
+                android:id="@+id/editTextPatientName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="#ffffff"
+                android:ems="10"
+                android:hint="@string/patient_name"
+                android:inputType="textPersonName"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp" />
+
+            <TextView
+                android:id="@+id/textViewPatientBirthdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="20dp"
+                android:text="@string/birthday_date"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/text_medium_size" />
+
+            <DatePicker
+                android:id="@+id/datePatientPickerBirthdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                style="@style/AppBaseTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="bottom|right" >
+
+                <Button
+                    android:id="@+id/buttonPatientHistory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/patient_history" />
+
+                <Button
+                    android:id="@+id/buttonPatientNewCondition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/new_condition" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>

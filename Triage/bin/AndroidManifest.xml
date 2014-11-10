@@ -43,6 +43,10 @@
             android:name=".Screen_change_time"
             android:label="@string/title_activity_screen_change_time" >
         </activity>
+        <activity
+            android:name="com.nurses.triage.FileReaderWriter"
+            android:label="@string/title_activity_file_reader_writer" >
+        </activity>
     </application>
 
 </manifest>

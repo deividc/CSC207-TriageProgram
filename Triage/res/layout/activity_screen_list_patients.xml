@@ -9,24 +9,10 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.nurses.triage.Screen_list_patients" >
 
-    <ListView
-        android:id="@+id/listViewListPatientsList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/radioGroupListPatientOrdering"
-        android:background="@color/text_white" >
-
-    </ListView>
-
     <RadioGroup
         android:id="@+id/radioGroupListPatientOrdering"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true" >
+        android:layout_height="wrap_content" >
 
         <RadioButton
             android:id="@+id/radioButtonListPatientsOrderByUrgency"
@@ -39,7 +25,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/order_by_time" />
-
     </RadioGroup>
+
+    <ListView
+        android:id="@+id/listViewListPatientsList"
+        android:layout_width="match_parent"
+        android:layout_height="370dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/radioGroupListPatientOrdering"
+        android:background="@color/text_white" >
+
+    </ListView>
 
 </RelativeLayout>

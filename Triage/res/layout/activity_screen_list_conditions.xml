@@ -10,7 +10,7 @@
     tools:context="com.nurses.triage.Screen_list_conditions" >
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textViewListConditionsHealthCardNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="@string/health_card_number"
@@ -20,11 +20,11 @@
         android:textColor="@color/text_black" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/textViewListConditionsPatientName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_below="@+id/textView2"
+        android:layout_alignLeft="@+id/textViewListConditionsHealthCardNumber"
+        android:layout_below="@+id/textViewListConditionsHealthCardNumber"
         android:hint="@string/patient_name"
         android:paddingBottom="5dp"
         android:paddingTop="5dp"
@@ -32,13 +32,12 @@
         android:textColor="@color/text_black" />
 
     <ListView
-        android:id="@+id/listView1"
+        android:id="@+id/listViewListConditions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/textView1"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textViewListConditionsPatientName"
         android:background="@color/text_white" >
-
     </ListView>
 
 </RelativeLayout>

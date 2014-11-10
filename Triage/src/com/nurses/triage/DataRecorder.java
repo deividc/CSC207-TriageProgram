@@ -24,7 +24,7 @@ import java.io.IOException;
 
 public class DataRecorder
 {
-	/*
+    /*
      * Record a string of data in a file.
      * 
      * @param       the complete path of the file or just the name plus extension.
@@ -33,34 +33,32 @@ public class DataRecorder
      * 
      * @return      boolean True for no exceptions, False for exceptions
      */
-    public boolean fileRecorder(String filename, String data)
+    public boolean fileRecorder(String FILEPATH, String data)
     {
         try {
-        	PrintStream out = new PrintStream(new FileOutputStream(filename));
+        	PrintStream out = new PrintStream(new FileOutputStream(FILEPATH));
             out.print(data);
         }
-        catch (IOException e)
-        {
+        catch ( IOException e) {
             return false;
         }
         
         return true;
     }
     
-    public String fileReader(String filename)
+    public String fileReader(String FILEPATH)
     {
         StringBuilder data = new StringBuilder();
         try {
-        	Scanner scanner = new Scanner(new FileInputStream(filename));
+        	Scanner scanner = new Scanner(new FileInputStream(FILEPATH));
             while (scanner.hasNextLine()) {
                 data.append(scanner.nextLine());
                 data.append("\n");
             }
             scanner.close();
         }
-        catch (IOException e)
-        {
-            
+        catch (IOException e) {
+            //To implement
         }
         
         return data.toString();

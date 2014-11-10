@@ -5,6 +5,7 @@ import com.example.triage.R;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,7 +19,9 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-        Nurse nurse = new Nurse();
+        //Nurse nurse = new Nurse();
+        //nurse.readPatientsFromFile();
+        DataRecorder dr = new DataRecorder();
         
         Button buttonSearchPatient = (Button) findViewById(R.id.buttonMainSearchPatient);
         buttonSearchPatient.setOnClickListener(new View.OnClickListener (){
@@ -29,10 +32,7 @@ public class MainActivity extends Activity {
 			}
         	
         });
-        
         /*
-         * Commenting out because not implemented in this phase.
-         * 
         Button buttonListOfPatients = (Button) findViewById(R.id.buttonMainListOfPatients);
         buttonListOfPatients.setOnClickListener(new View.OnClickListener (){
 

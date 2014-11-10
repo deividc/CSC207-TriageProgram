@@ -35,5 +35,6 @@
     <color name="text_white">#ffffff</color>
 
     <string name="title_activity_screen_change_time">Screen_change_time</string>
+    <string name="title_activity_file_reader_writer">FileReaderWriter</string>
 
 </resources>
