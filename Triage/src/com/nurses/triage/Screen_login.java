@@ -1,5 +1,9 @@
 package com.nurses.triage;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import com.example.triage.R;
@@ -23,7 +27,7 @@ import android.widget.EditText;
 
 public class Screen_login extends Activity  implements OnClickListener{
 
-	private static ArrayList<ArrayList> usersList;
+	private static ArrayList<String[]> usersList = new ArrayList<String[]>();
 	
 	private static String username, password, userType;
 	private boolean userFound;
@@ -33,8 +37,12 @@ public class Screen_login extends Activity  implements OnClickListener{
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_screen_login);		
+		
+		loadData(); //load users login data
+		
+		setContentView(R.layout.activity_screen_login);
 		
 		typedUsername = (EditText) findViewById(R.id.editTextLoginUsername);
 		typedPassword = (EditText) findViewById(R.id.editTextLoginPassword);
@@ -84,17 +92,40 @@ public class Screen_login extends Activity  implements OnClickListener{
 	public void verifyLoginInfo (String un, String pw) {
 		if(usersList != null) {
 			for (int i = 0; i < usersList.size(); i++) {
-				if (usersList.get(i).get(0).equals(un) && usersList.get(i).get(1).equals(pw)) {
-					this.username = (String) usersList.get(i).get(0);
-					this.password = (String) usersList.get(i).get(1);
-					this.userType = (String) usersList.get(i).get(2);
+				String [] test = usersList.get(i);
+				if (test[0].equals(un) && test[1].equals(pw)) {
+					this.username = test[0];
+					this.password = test[1];
+					this.userType = test[2];
 					userFound = true;
+				}
+				else {
+					Log.e("Error", "User not found"); // to delete
 				}
 			}
 		}
 		else {
-			Log.e("Error", "Null");
+			Log.e("Error", "Null"); // to delete
 		}
 	}
 
+	/*
+	 * Load data from files
+	 */
+	public void loadData() {
+		InputStream inputStream = getResources().openRawResource(R.raw.passwords);
+	        try {
+	            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+	            String line = new String();
+	            String[] patientInfo;
+	            while ((line = reader.readLine()) != null) {
+	            	patientInfo = line.split(",");
+	            	usersList.add(patientInfo);
+	            }
+	            reader.close();
+	        }
+	        catch(IOException e) {
+	        	Log.e("Error", "file not found");
+	        }
+	}
 }
