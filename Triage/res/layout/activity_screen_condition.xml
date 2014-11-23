@@ -1,8 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/triage_wallpaper"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/triage_background"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -28,7 +28,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="10dp"
-                android:paddingTop="15dp"
                 android:text="@string/symptoms"
                 android:textColor="@color/text_black"
                 android:textSize="@dimen/text_medium_size" />
@@ -142,26 +141,35 @@
         android:textColor="@color/text_black"
         android:textSize="@dimen/text_medium_size" />
 
+    <CheckBox
+        android:id="@+id/checkBoxConditionSeenByDoctor"
+        android:layout_width="172dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:hint="@string/seen_by_doctor"
+        android:text="@string/seen_by_doctor"
+        android:textColor="@color/text_black" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="right" >
+        android:orientation="vertical" >
 
-         <Button
-             android:id="@+id/buttonConditionChangeTime"
-             style="?android:attr/buttonStyleSmall"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="@string/change_time"
-             android:textSize="@dimen/text_medium_size" />
+        <Button
+            android:id="@+id/buttonConditionSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/save"
+            android:textSize="@dimen/text_medium_size" />
 
-         <Button
-             android:id="@+id/buttonConditionSave"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="@string/save"
-             android:textSize="@dimen/text_medium_size" />
-        
+        <Button
+            android:id="@+id/buttonConditionChangeTime"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/change_time"
+            android:textSize="@dimen/text_medium_size" />
+
     </LinearLayout>
             
         </LinearLayout>

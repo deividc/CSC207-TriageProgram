@@ -7,5 +7,6 @@
         android:orderInCategory="100"
         android:showAsAction="never"
         android:title="@string/action_settings"/>
+    <item android:id="@+id/itemMenuAbout" android:actionLayout="@layout/activity_screen_about" android:title="About" android:actionViewClass="@string/title_activity_screen_about" android:menuCategory="secondary"></item>
 
 </menu>

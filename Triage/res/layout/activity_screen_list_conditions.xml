@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/triage_wallpaper"
+    android:background="@drawable/triage_background"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -13,31 +13,42 @@
         android:id="@+id/textViewListConditionsHealthCardNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:background="@color/text_white"
         android:hint="@string/health_card_number"
         android:paddingBottom="5dp"
         android:paddingTop="5dp"
         android:text="@string/health_card_number"
-        android:textColor="@color/text_black" />
-
-    <TextView
-        android:id="@+id/textViewListConditionsPatientName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textViewListConditionsHealthCardNumber"
-        android:layout_below="@+id/textViewListConditionsHealthCardNumber"
-        android:hint="@string/patient_name"
-        android:paddingBottom="5dp"
-        android:paddingTop="5dp"
-        android:text="@string/patient_name"
-        android:textColor="@color/text_black" />
+        android:textColor="@color/text_black"
+        android:textSize="@dimen/text_medium_size" />
 
     <ListView
         android:id="@+id/listViewListConditions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/textViewListConditionsPatientName"
+        android:layout_marginTop="16dp"
         android:background="@color/text_white" >
+
     </ListView>
+
+    <TextView
+        android:id="@+id/textViewListConditionsPatientName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textViewListConditionsHealthCardNumber"
+        android:layout_marginTop="8dp"
+        android:background="@color/text_white"
+        android:hint="@string/patient_name"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:text="@string/patient_name"
+        android:textColor="@color/text_black"
+        android:textSize="@dimen/text_medium_size" />
 
 </RelativeLayout>

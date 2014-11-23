@@ -5,9 +5,13 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_screen_patient">Patient</string>
-    <string name="title_activity_screen_condition">Condition</string>
+    <string name="title_activity_screen_condition">Add New Condition</string>
     <string name="title_activity_screen_list_patients">List of Patients</string>
-    <string name="title_activity_screen_list_conditions">List of Conditions</string>
+    <string name="title_activity_screen_list_conditions">Patient History</string>
+    <string name="title_activity_screen_new_patient">Add New Patient</string>
+    <string name="title_activity_screen_login">Login</string>
+    <string name="title_activity_screen_about">About</string>
+    <string name="title_activity_splash_screen">Hospital Triage</string>
     <string name="birthday_date">Patient Birthday</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
@@ -21,7 +25,7 @@
     <string name="diastolic">Diastolic</string>
     <string name="time">Time</string>
     <string name="heart_rate">Heart Rate</string>
-    <string name="time_now">11-06-2014</string>
+    <string name="time_now">08-08-1987</string>
     <string name="new_condition">New Condition</string>
     <string name="search_patient">Search Patient</string>
     <string name="order_by_urgency">Urgency</string>
@@ -30,11 +34,36 @@
     <string name="patient_history">Patient History</string>
     <string name="health_card_number">Health Card Number</string>
     <string name="patient_name">Patient Name</string>
+    <string name="seen_by_doctor">Seen By Doctor?</string>
+    <string name="message_error_blank_field">Blank fields not permitted</string>
+    <string name="new_patient">New Patient</string>
+    <string name="type_health_card_number">Type patient\'s health card number</string>
+    <string name="patient_not_found">Patient not Found</string>
+    <string name="load_data">Load Data</string>
+    <string name="warning">Warning</string>
+    <string name="message_data_loss">Unsaved data will be lost. Do you want to continue?</string>
+    <string name="message_logout">Do you want to logout the system? All unsaved data will be lost.</string>
+    <string name="save_data">Save Data</string>
+    <string name="rights_copy">All rights reserved</string>
+    <string name="user">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="message_login_error">Username or password incorrect</string>
+    <string name="logout">Logout</string>
 
     <color name="text_black">#000000</color>
     <color name="text_white">#ffffff</color>
+    <color name="color_background_1">#fe5e3a</color>
+    <color name="color_background_2">#ff2a68</color>
+    <color name="color_background_3">#242527</color>
+    <color name="color_background_4">#27282a</color>
 
-    <string name="title_activity_screen_change_time">Screen_change_time</string>
-    <string name="title_activity_file_reader_writer">FileReaderWriter</string>
+    <string name="version">Version 1.0.0</string>
+    <string name="creation">Creative Team</string>
+    <string name="deivid_c">Deivid Cavalcante</string>
+    <string name="jon_k">Jon Ke</string>
+    <string name="alvi_h">Alvi Habib</string>
+    <string name="tarang_m">Tarang Marathe</string>
+    
 
 </resources>

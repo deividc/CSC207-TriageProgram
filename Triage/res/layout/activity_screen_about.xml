@@ -1,0 +1,118 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="5dp"
+    tools:context="com.nurses.triage.Screen_about" >
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:src="@drawable/main_icon_app_512x512" />
+
+            <TextView
+                android:id="@+id/textViewAboutAppName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/app_name"
+                android:textSize="@dimen/text_medium_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textViewAboutVersion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingBottom="15dp"
+                android:text="@string/version"
+                android:textSize="@dimen/text_small_size" />
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingBottom="50dp"
+                android:text="@string/rights_copy" />
+
+            <TextView
+                android:id="@+id/textViewAboutCreation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="@string/creation" />
+
+            <ImageView
+                android:id="@+id/imageViewAuthor1"
+                android:layout_width="match_parent"
+                android:layout_height="156dp"
+                android:src="@drawable/deivid_c" />
+
+            <TextView
+                android:id="@+id/textViewAboutAuthor1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/deivid_c" />
+
+            <ImageView
+                android:id="@+id/imageViewAuthor2"
+                android:layout_width="match_parent"
+                android:layout_height="156dp"
+                android:src="@drawable/jon_k" />
+
+            <TextView
+                android:id="@+id/textViewAboutAuthor2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/jon_k" />
+
+            <ImageView
+                android:id="@+id/imageViewAuthor3"
+                android:layout_width="match_parent"
+                android:layout_height="156dp"
+                android:src="@drawable/alvi_h" />
+
+            <TextView
+                android:id="@+id/textViewAboutAuthor3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/alvi_h" />
+
+            <ImageView
+                android:id="@+id/imageViewAuthor4"
+                android:layout_width="match_parent"
+                android:layout_height="156dp"
+                android:src="@drawable/tarang_m" />
+
+            <TextView
+                android:id="@+id/textViewAboutAuthor4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/tarang_m" />
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
