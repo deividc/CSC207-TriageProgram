@@ -14,8 +14,10 @@ public class InputOutputController
         this.listOfPatients = list;
     }
     
-    /*
+    /**
      * Save the List of Patients on a file
+     * 
+     * @return	data of all patients to save
      */
     public String savePatients()
     {
@@ -28,8 +30,10 @@ public class InputOutputController
         return tmp.toString();
     }
     
-    /*
+    /**
      * Save the list of conditions of each patient on a file
+     * 
+     * @return	data of all conditions to save
      */
     public String saveConditions()
     {
@@ -43,8 +47,10 @@ public class InputOutputController
         return tmp.toString();
     }
     
-    /*
+    /**
      *  Recover the patients' information from records
+     *  
+     *  @param	data of all patients
      */
     public void patientsFromFile(String data)
     {
@@ -92,10 +98,11 @@ public class InputOutputController
         }
     }
     
-    /*
+    /**
      *  Recover history of conditions of each patient from records
+     *  
+     *  @param	data of all conditions
      */
-    
     public void conditionsFromFile(String data)
     {
         

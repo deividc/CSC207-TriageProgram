@@ -48,20 +48,23 @@
         <activity
             android:name="com.nurses.triage.Screen_login"
             android:label="@string/title_activity_screen_login"
-            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" 
-            android:screenOrientation="portrait" >
-            
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" >
         </activity>
         <activity
             android:name="com.nurses.triage.Splash_screen"
             android:label="@string/title_activity_splash_screen"
-            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.nurses.triage.Screen_prescription"
+            android:label="@string/title_activity_screen_prescription" >
         </activity>
     </application>
 

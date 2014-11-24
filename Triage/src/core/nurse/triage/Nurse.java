@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class Nurse implements Serializable
 {
-    /**
+    /*
 	 * serialVersionUID automatic
 	 */
 	private static final long serialVersionUID = 1L;
@@ -21,7 +21,7 @@ public class Nurse implements Serializable
         listOfPatients = new ListOfPatients();
     }
     
-    /*
+    /**
      * Add a new patient
      * 
      * @param		health card number
@@ -44,7 +44,7 @@ public class Nurse implements Serializable
         return true;
     }
     
-    /*
+    /**
      * Add new patient p
      * 
      * @param		patient p
@@ -65,37 +65,17 @@ public class Nurse implements Serializable
         return true;
     }
     
-    /*
-     * Create a new condition of a patient that matches one health card number
+    /**
+     * Return patient's information of a patient who matches a health card number
      * 
-     * @param		health card number
-     * @param		symptoms
-     * @param		temperature
-     * @param		blood pressure diastolic
-     * @param		blood pressure systolic
-     * @param		heart rate
-     * @param		arrival date
-    public boolean checkNewCondition(String healthCardNumber, String symptoms, float temperature, int bloodPressureDiastolic,
-    int bloodPressureSystolic, int heartRate, String arrivalDate){
-        Patient tmp = new Patient();
-        for(int i = 0; i < listOfPatients.size(); i++)
-        {
-            tmp = listOfPatients.get(i);
-            if (healthCardNumber.equals(tmp.getHealthCardNumber())){
-                Condition cond = new Condition(symptoms, temperature, bloodPressureDiastolic, bloodPressureSystolic, heartRate, arrivalDate);
-                tmp.newCondition(cond);
-                return true; //New condition added
-            }
-        }
-        
-        return false;
-    }
-    */
+     * @param healthCardNumber
+     * @return
+     */
     public Patient viewPatientInfo(String healthCardNumber){
         return listOfPatients.viewPatientInfo(healthCardNumber);
     }
     
-    /*
+    /**
      * Record the list of patient
      * 
      * @param		null
@@ -106,7 +86,7 @@ public class Nurse implements Serializable
          return ioc.savePatients();
     }
     
-    /*
+    /**
      * Record the list of condition
      * 
      * @param		null
@@ -117,7 +97,7 @@ public class Nurse implements Serializable
         return ioc.saveConditions();
     }
     
-    /*
+    /**
      * Read the list of patient of records and update the information in the memory.
      * 
      * @param		data of patients
@@ -128,15 +108,17 @@ public class Nurse implements Serializable
         ioc.patientsFromFile(data);
     }
     
-    /*
+    /**
+     * Organize the condition of all patients after reading data from a file
      * 
+     * @param data
      */
     public void readConditionsFromFile(String data){
         InputOutputController ioc = new InputOutputController(listOfPatients);
         ioc.conditionsFromFile(data);
     }
     
-    /*
+    /**
      * return a list of patients
      * 
      * @param		null
@@ -146,7 +128,7 @@ public class Nurse implements Serializable
         return listOfPatients.entireList();
     }
     
-    /*
+    /**
      * Search for the list of conditions through the health card number
      * 
      * @param		health card number
@@ -164,7 +146,7 @@ public class Nurse implements Serializable
         return tmp;
     }
     
-    /*
+    /**
      * Set array of conditions for one specific patient that matches the health card number
      * 
      * @param		health card number

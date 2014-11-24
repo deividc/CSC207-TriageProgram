@@ -1,7 +1,5 @@
 package com.nurses.triage;
 
-import java.util.Calendar;
-
 import com.example.triage.R;
 
 import core.nurse.triage.Condition;
@@ -10,11 +8,9 @@ import core.nurse.triage.DateTime;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,8 +24,6 @@ import android.view.View.OnClickListener;
 public class Screen_condition extends Activity implements OnClickListener {
 	
 	private TextView timeNow;
-	private DatePicker fixingTime;
-	private DatePickerDialog dataDialog;
 	private AlertDialog.Builder alertDialog;
 	private Button changeDate, save;
 	private EditText symptoms, temperature, bloodPressureSystolic, bloodPressureDiastolic, heartRate;

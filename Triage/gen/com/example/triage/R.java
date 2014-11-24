@@ -130,7 +130,8 @@ public final class R {
         public static final int activity_screen_login=0x7f030005;
         public static final int activity_screen_new_patient=0x7f030006;
         public static final int activity_screen_patient=0x7f030007;
-        public static final int activity_splash_screen=0x7f030008;
+        public static final int activity_screen_prescription=0x7f030008;
+        public static final int activity_splash_screen=0x7f030009;
     }
     public static final class menu {
         public static final int main=0x7f090000;
@@ -141,7 +142,8 @@ public final class R {
         public static final int screen_login=0x7f090005;
         public static final int screen_new_patient=0x7f090006;
         public static final int screen_patient=0x7f090007;
-        public static final int splash_screen=0x7f090008;
+        public static final int screen_prescription=0x7f090008;
+        public static final int splash_screen=0x7f090009;
     }
     public static final class raw {
         public static final int passwords=0x7f040000;
@@ -149,21 +151,22 @@ public final class R {
     }
     public static final class string {
         public static final int action_settings=0x7f060002;
-        public static final int alvi_h=0x7f060035;
+        public static final int alvi_h=0x7f060036;
         public static final int app_name=0x7f060000;
         public static final int birthday_date=0x7f06000b;
         public static final int blood_pressure=0x7f060011;
         public static final int cancel=0x7f06000d;
         public static final int celsius=0x7f060013;
         public static final int change_time=0x7f060010;
-        public static final int creation=0x7f060032;
-        public static final int deivid_c=0x7f060033;
+        public static final int creation=0x7f060033;
+        public static final int deivid_c=0x7f060034;
         public static final int description_symptoms=0x7f060012;
         public static final int diastolic=0x7f060015;
+        public static final int error_patient_not_found=0x7f060031;
         public static final int health_card_number=0x7f06001f;
         public static final int heart_rate=0x7f060017;
         public static final int hello_world=0x7f060001;
-        public static final int jon_k=0x7f060034;
+        public static final int jon_k=0x7f060035;
         public static final int list_of_patients=0x7f06001d;
         public static final int load_data=0x7f060026;
         public static final int login=0x7f06002e;
@@ -187,7 +190,7 @@ public final class R {
         public static final int seen_by_doctor=0x7f060021;
         public static final int symptoms=0x7f06000e;
         public static final int systolic=0x7f060014;
-        public static final int tarang_m=0x7f060036;
+        public static final int tarang_m=0x7f060037;
         public static final int temperature=0x7f06000f;
         public static final int time=0x7f060016;
         public static final int time_now=0x7f060018;
@@ -198,10 +201,11 @@ public final class R {
         public static final int title_activity_screen_login=0x7f060008;
         public static final int title_activity_screen_new_patient=0x7f060007;
         public static final int title_activity_screen_patient=0x7f060003;
+        public static final int title_activity_screen_prescription=0x7f060038;
         public static final int title_activity_splash_screen=0x7f06000a;
         public static final int type_health_card_number=0x7f060024;
         public static final int user=0x7f06002c;
-        public static final int version=0x7f060031;
+        public static final int version=0x7f060032;
         public static final int warning=0x7f060027;
     }
     public static final class style {

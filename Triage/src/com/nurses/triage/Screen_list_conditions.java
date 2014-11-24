@@ -3,29 +3,29 @@ package com.nurses.triage;
 import java.util.ArrayList;
 
 import com.example.triage.R;
-import com.example.triage.R.id;
-import com.example.triage.R.layout;
-import com.example.triage.R.menu;
-
 import core.nurse.triage.Condition;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class Screen_list_conditions extends Activity {
+public class Screen_list_conditions extends Activity implements OnItemClickListener  {
 
 	private TextView healthCardNumber, patientName;
 	private ListView listViewConditions;
 	
 	private ArrayList<Condition> listOfConditions;
+	
+	ArrayList<String> dateConditions;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -66,17 +66,26 @@ public class Screen_list_conditions extends Activity {
 	
 	public void showConditionsList() {
 		
-		ArrayList<String> dateConditions = new ArrayList<String>();
+		dateConditions = new ArrayList<String>();
 		
 		for (int i = 0; i < listOfConditions.size(); i++) {
 			dateConditions.add(listOfConditions.get(i).getArrivalDate());
 		}
 		
-		Log.i("Deivid testando 2", dateConditions.toString());
-		
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, dateConditions);
 		
 		listViewConditions = (ListView) findViewById(R.id.listViewListConditions);
 		listViewConditions.setAdapter(adapter);
+		listViewConditions.setOnItemClickListener(this);
+	}
+
+	@Override
+	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+		
+		AlertDialog.Builder showCondition = new AlertDialog.Builder(this);
+		showCondition.setTitle(dateConditions.get(arg2).toString());
+		showCondition.setMessage(listOfConditions.get(arg2).toString2());
+		showCondition.show();
+		
 	}
 }

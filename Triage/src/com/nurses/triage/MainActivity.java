@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 
 import com.example.triage.R;
 
@@ -27,6 +26,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class MainActivity extends Activity implements OnClickListener{
@@ -36,7 +36,6 @@ public class MainActivity extends Activity implements OnClickListener{
 	public static Nurse nurse = new Nurse();
 	
 	private AlertDialog.Builder alertDialogSearchPatient;
-	private AlertDialog alertError;
 	
 	private Button buttonNewPatient, buttonSearchPatient, buttonListOfPatients, buttonLoadData;
 	private EditText editTextSearchHealthCardNumber;
@@ -47,6 +46,18 @@ public class MainActivity extends Activity implements OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        
+        
+        buttonSearchPatient = (Button) findViewById(R.id.buttonMainSearchPatient);
+        buttonListOfPatients = (Button) findViewById(R.id.buttonMainListOfPatients);
+        buttonNewPatient = (Button) findViewById(R.id.buttonMainNewPatient);
+        buttonLoadData = (Button) findViewById(R.id.buttonMainLoadData);
+        
+        buttonSearchPatient.setOnClickListener(this);
+        buttonListOfPatients.setOnClickListener(this);
+        buttonNewPatient.setOnClickListener(this);
+        buttonLoadData.setOnClickListener(this);
         
         /*
          * set up the main screen according to the user data
@@ -59,20 +70,12 @@ public class MainActivity extends Activity implements OnClickListener{
         userName.setText(username);
         if (userType.equals("physician")) {
         	userImage.setImageResource(R.drawable.doctor_logo);
+        	//buttonNewPatient.setVisibility(View.INVISIBLE);
+        	
         }
         else {
         	userImage.setImageResource(R.drawable.nurse_logo);
         }
-        
-        buttonSearchPatient = (Button) findViewById(R.id.buttonMainSearchPatient);
-        buttonListOfPatients = (Button) findViewById(R.id.buttonMainListOfPatients);
-        buttonNewPatient = (Button) findViewById(R.id.buttonMainNewPatient);
-        buttonLoadData = (Button) findViewById(R.id.buttonMainLoadData);
-        
-        buttonSearchPatient.setOnClickListener(this);
-        buttonListOfPatients.setOnClickListener(this);
-        buttonNewPatient.setOnClickListener(this);
-        buttonLoadData.setOnClickListener(this);
     }
 
     @Override
@@ -136,7 +139,7 @@ public class MainActivity extends Activity implements OnClickListener{
             			  startActivity(intent); //Result changes in patient conditions
             			  
         			  } else { //Patient not Found
-        				  //Implement later
+        				  Toast.makeText(getApplicationContext(), R.string.error_patient_not_found, Toast.LENGTH_LONG).show();
         			  }
 
     			  	} else { //Blank number for search not acceptable
