@@ -32,7 +32,7 @@ public class Screen_condition extends Activity implements OnClickListener {
 	private int year, month, day, hour, minute;
 	private long time;
 	private boolean patientSeenByDoctor;
-	private String patientSymptoms, patientTemperature, patientBloodPressureSystolic, patientBloodPressureDiastolic, patientHeartRate, patientArrivalDate;
+	private String patientSymptoms, patientTemperature, patientBloodPressureSystolic, patientBloodPressureDiastolic, patientHeartRate, patientArrivalDate, minuteAsString, hourAsString;
 	Condition c;
 	
 	@Override
@@ -114,7 +114,9 @@ public class Screen_condition extends Activity implements OnClickListener {
 		DateTime dt = new DateTime();
 		
 		hour = Integer.parseInt(dt.getHour24());
+		hourAsString = dt.getHour24();
 		minute = Integer.parseInt(dt.getMinute());
+		minuteAsString = dt.getMinute();
 		year = Integer.parseInt(dt.getYear());
 		month = Integer.parseInt(dt.getMonth());
 		day = Integer.parseInt(dt.getDay());
@@ -129,7 +131,7 @@ public class Screen_condition extends Activity implements OnClickListener {
 	 */
 	public void setCurrentDate() {
 		TextView timeNow = (TextView) findViewById(R.id.textViewConditionTimeNow);
-		timeNow.setText(month + "-" + day + "-" + year + "		" + hour + ":" + minute);
+		timeNow.setText(month + "-" + day + "-" + year + "		" + hourAsString + ":" + minuteAsString);
 	}
 	
 	@Override
