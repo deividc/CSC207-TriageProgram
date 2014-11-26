@@ -33,36 +33,41 @@ public final class R {
         public static final int text_small_size=0x7f050002;
     }
     public static final class drawable {
-        public static final int alert_icon=0x7f020000;
-        public static final int alvi_h=0x7f020001;
-        public static final int button_2=0x7f020002;
-        public static final int button_login=0x7f020003;
-        public static final int deivid_c=0x7f020004;
-        public static final int doctor_logo=0x7f020005;
-        public static final int field=0x7f020006;
-        public static final int ic_launcher=0x7f020007;
-        public static final int jon_k=0x7f020008;
-        public static final int login_passw=0x7f020009;
-        public static final int login_password=0x7f02000a;
-        public static final int login_user=0x7f02000b;
-        public static final int login_username=0x7f02000c;
-        public static final int logoff_button=0x7f02000d;
-        public static final int magnifying_glass=0x7f02000e;
-        public static final int main_icon_app_512x512=0x7f02000f;
-        public static final int main_icon_app_xhdpi=0x7f020010;
-        public static final int main_icon_app_xxhdpi=0x7f020011;
-        public static final int nurse_logo=0x7f020012;
-        public static final int tarang_m=0x7f020013;
-        public static final int triage_background=0x7f020014;
-        public static final int triage_background_dark=0x7f020015;
-        public static final int triage_message=0x7f020016;
-        public static final int warning_xxhdpi=0x7f020017;
+        public static final int add_icon=0x7f020000;
+        public static final int alert_icon=0x7f020001;
+        public static final int alvi_h=0x7f020002;
+        public static final int button_2=0x7f020003;
+        public static final int checkbox_checked=0x7f020004;
+        public static final int checkbox_pressed=0x7f020005;
+        public static final int checkbox_unchecked=0x7f020006;
+        public static final int deivid_c=0x7f020007;
+        public static final int doctor_logo=0x7f020008;
+        public static final int field=0x7f020009;
+        public static final int ic_launcher=0x7f02000a;
+        public static final int jon_k=0x7f02000b;
+        public static final int login_passw=0x7f02000c;
+        public static final int login_password=0x7f02000d;
+        public static final int login_user=0x7f02000e;
+        public static final int login_username=0x7f02000f;
+        public static final int logoff_button=0x7f020010;
+        public static final int magnifying_glass=0x7f020011;
+        public static final int main_icon_app_512x512=0x7f020012;
+        public static final int main_icon_app_xhdpi=0x7f020013;
+        public static final int main_icon_app_xxhdpi=0x7f020014;
+        public static final int nurse_logo=0x7f020015;
+        public static final int search_icon=0x7f020016;
+        public static final int tarang_m=0x7f020017;
+        public static final int triage_background=0x7f020018;
+        public static final int triage_background_dark=0x7f020019;
+        public static final int triage_checkbox=0x7f02001a;
+        public static final int triage_message=0x7f02001b;
+        public static final int warning_xxhdpi=0x7f02001c;
     }
     public static final class id {
         public static final int TextViewConditionBloodPressure=0x7f0a0019;
         public static final int action_settings=0x7f0a003b;
-        public static final int buttonConditionChangeTime=0x7f0a0022;
-        public static final int buttonConditionSave=0x7f0a0021;
+        public static final int buttonConditionChangeTime=0x7f0a0021;
+        public static final int buttonConditionSave=0x7f0a0022;
         public static final int buttonLogin=0x7f0a002c;
         public static final int buttonMainListOfPatients=0x7f0a0005;
         public static final int buttonMainLoadData=0x7f0a0006;
@@ -235,11 +240,13 @@ public final class R {
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f080001;
+        public static final int Theme_SelectDate=0x7f080004;
         /**  ActionBar styles 
          */
         public static final int TriageActionBar=0x7f080003;
         /**  the theme applied to the application or activity 
          */
         public static final int TriageActionBarTheme=0x7f080002;
+        public static final int Widget_EditText_Black=0x7f080005;
     }
 }

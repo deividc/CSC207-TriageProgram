@@ -43,6 +43,8 @@ public class Screen_patient extends Activity implements OnClickListener{
 		healthCardNumber = (EditText) findViewById(R.id.editTextPatientHealthCardNumber);
 		patientName = (EditText) findViewById(R.id.editTextPatientName);
 		birthdayDate = (DatePicker) findViewById(R.id.datePatientPickerBirthdate);
+		healthCardNumber.setTextColor(getResources().getColor(R.color.text_black));
+		patientName.setTextColor(getResources().getColor(R.color.text_black));
 		
 		healthCardNumber.setText(patientFound.getHealthCardNumber());
 		patientName.setText(patientFound.getName());

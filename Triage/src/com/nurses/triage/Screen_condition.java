@@ -187,7 +187,6 @@ public class Screen_condition extends Activity implements OnClickListener {
 					});
 					alertDialog.show();
 					
-					
 				} else {
 					// Create a new condition with the information provided by use and return the condition back to the patient
 					c = new Condition(

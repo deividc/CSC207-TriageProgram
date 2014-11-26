@@ -23,7 +23,9 @@
         </activity>
         <activity
             android:name="com.nurses.triage.Screen_patient"
-            android:label="@string/title_activity_screen_patient" >
+            android:label="@string/title_activity_screen_patient"
+            android:theme="@style/Theme.SelectDate"
+            android:icon="@drawable/search_icon" >
         </activity>
         <activity
             android:name="com.nurses.triage.Screen_condition"
@@ -39,7 +41,9 @@
         </activity>
         <activity
             android:name="com.nurses.triage.Screen_new_patient"
-            android:label="@string/title_activity_screen_new_patient" >
+            android:label="@string/title_activity_screen_new_patient"
+            android:theme="@style/Theme.SelectDate"
+            android:icon="@drawable/add_icon" >
         </activity>
         <activity
             android:name="com.nurses.triage.Screen_about"

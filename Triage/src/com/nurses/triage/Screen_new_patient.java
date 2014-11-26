@@ -40,6 +40,13 @@ public class Screen_new_patient extends Activity implements OnClickListener {
 		saveNewPatientInfo = (Button) findViewById(R.id.buttonNewPatientSave);
 		saveNewPatientInfo.setOnClickListener(this);
 		
+		healthCardNumber = (EditText) findViewById(R.id.editTextNewPatientHealthCardNumber);
+		patientName = (EditText) findViewById(R.id.editTextNewPatientName);
+		birthdayDate = (DatePicker) findViewById(R.id.datePickerNewPatientBirthdate);
+		
+		healthCardNumber.setTextColor(getResources().getColor(R.color.text_black));
+		patientName.setTextColor(getResources().getColor(R.color.text_black));
+		
 	}
 
 	@Override
@@ -92,10 +99,6 @@ public class Screen_new_patient extends Activity implements OnClickListener {
 		 * Button save new patient info pressed
 		 */
 		if (v == saveNewPatientInfo) {
-			
-			healthCardNumber = (EditText) findViewById(R.id.editTextNewPatientHealthCardNumber);
-			patientName = (EditText) findViewById(R.id.editTextNewPatientName);
-			birthdayDate = (DatePicker) findViewById(R.id.datePickerNewPatientBirthdate);
 			
 			year = birthdayDate.getYear();
 			month = birthdayDate.getMonth() + 1;
