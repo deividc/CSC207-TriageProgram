@@ -70,7 +70,7 @@ public class MainActivity extends Activity implements OnClickListener{
         userName.setText(username);
         if (userType.equals("physician")) {
         	userImage.setImageResource(R.drawable.doctor_logo);
-        	//buttonNewPatient.setVisibility(View.INVISIBLE);
+        	buttonNewPatient.setVisibility(View.GONE);
         	
         }
         else {
