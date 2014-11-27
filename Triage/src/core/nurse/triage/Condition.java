@@ -70,8 +70,24 @@ public class Condition implements Serializable
      * 
      * @return
      */
-    public String getSymptons() {
+    public String getSymptoms() {
         return this.symptoms;
+    }
+
+    public int getSystolic() {
+        return this.bloodPressureSystolic;
+    }
+    
+    public int getDiastolic() {
+        return this.bloodPressureDiastolic;
+    }
+    
+    public int getHeartRate() {
+        return this.heartRate;
+    }
+    
+    public float getTemperature() {
+        return this.temperature;
     }
     
     /**
