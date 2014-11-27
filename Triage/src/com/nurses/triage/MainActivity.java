@@ -9,6 +9,7 @@ import com.example.triage.R;
 
 import core.nurse.triage.Nurse;
 import core.nurse.triage.Patient;
+import core.nurse.triage.Condition;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -27,6 +28,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.database.Cursor;
+import java.util.ArrayList;
 
 
 public class MainActivity extends Activity implements OnClickListener{
@@ -39,7 +42,9 @@ public class MainActivity extends Activity implements OnClickListener{
 	
 	private Button buttonNewPatient, buttonSearchPatient, buttonListOfPatients, buttonLoadData;
 	private EditText editTextSearchHealthCardNumber;
-	
+
+    private DataHandler patientData;
+
 	
 	
     @Override
@@ -47,6 +52,8 @@ public class MainActivity extends Activity implements OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
+        patientData = new DataHandler(this);
+        patientData.getDB();
         
         
         buttonSearchPatient = (Button) findViewById(R.id.buttonMainSearchPatient);
@@ -70,7 +77,7 @@ public class MainActivity extends Activity implements OnClickListener{
         userName.setText(username);
         if (userType.equals("physician")) {
         	userImage.setImageResource(R.drawable.doctor_logo);
-        	buttonNewPatient.setVisibility(View.GONE);
+        	//buttonNewPatient.setVisibility(View.INVISIBLE);
         	
         }
         else {
@@ -215,29 +222,59 @@ public class MainActivity extends Activity implements OnClickListener{
 	 * Load data from files
 	 */
 	public void loadData() {
-		StringBuilder dataOnFile = new StringBuilder();
-		InputStream inputStream = getResources().openRawResource(R.raw.patient_records);
-	        try {
-	            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-	            ;
-	            String line;
-	            while ((line = reader.readLine()) != null) {
-	            	dataOnFile.append(line);
-	            	dataOnFile.append('\n');
-	            }
-	            reader.close();
+        Cursor patientDb = patientData.getAllRecordsPatients();
 
-	        }
-	        catch(IOException e) {
-	        	Log.e("Error", "file not found");
-	        }
-	        
-	        //Log.i("Deivid testando", dataOnFile.toString());
-	        nurse.readPatientsFromFile(dataOnFile.toString());
+        if(patientDb.getCount() == 0) {
+            StringBuilder storedData = new StringBuilder();
+            InputStream inputStream = getResources().openRawResource(R.raw.patient_records);
+                try {
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        storedData.append(line);
+                        storedData.append('\n');
+                    }
+                    reader.close();
+                    System.out.println(storedData.toString());
+
+                }
+                catch(IOException e) {
+                    Log.e("Error", "file not found");
+                }
+                
+                //Log.i("Deivid testando", storedData.toString());
+        }
+        else{
+            patientDb.moveToFirst();
+            ArrayList<String> patientList = new ArrayList<String>();
+            for(int i = 0; i < patientDb.getCount(); i++){
+                patientList.add(patientDb.getString(patientDb.getColumnIndex("healthNumber")) + "," +
+                                patientDb.getString(patientDb.getColumnIndex("name")) + "," +
+                                patientDb.getString(patientDb.getColumnIndex("birthdate")));
+                patientDb.moveToNext();
+            }
+        }
+
+        Cursor conditionDb = patientData.getAllRecordsConditions();
+        conditionDb.moveToFirst();
+        ArrayList<String> conditionsList = new ArrayList<String>();
+        for(int j = 0; j < conditionDb.getCount(); j++){
+            conditionsList.add(conditionDb.getString(conditionDb.getColumnIndex("healthNumber")) + "," +
+                               conditionDb.getString(conditionDb.getColumnIndex("symptoms")) + "," +  
+                               conditionDb.getString(conditionDb.getColumnIndex("systolic")) + "," +  
+                               conditionDb.getString(conditionDb.getColumnIndex("diastolic")) + "," +  
+                               conditionDb.getString(conditionDb.getColumnIndex("temperature")) + "," +  
+                               conditionDb.getString(conditionDb.getColumnIndex("heartRate")) + "," +  
+                               conditionDb.getString(conditionDb.getColumnIndex("time")) + "," +  
+                               conditionDb.getString(conditionDb.getColumnIndex("arrival_date")) + "," +  
+                               conditionDb.getString(conditionDb.getColumnIndex("seen_by_doctor")));
+            conditionDb.moveToNext();
+        }
 	}
 	
 	public void loadDataExternalStorage() {
 	}
+
 	
 	/* Checks if external storage is available for read and write */
 	public boolean isExternalStorageWritable() {
@@ -259,6 +296,31 @@ public class MainActivity extends Activity implements OnClickListener{
 	}
 	
 	public void logoutAccount() {
+        // Save new info into the database
+        ArrayList<Patient> listPatients = nurse.listOfPatients();
+        for(int i=0; i < listPatients.size(); i++) {
+            if(!(patientData.patientExists(listPatients.get(i).getHealthCardNumber()))) {
+                patientData.insertPatient(listPatients.get(i).getHealthCardNumber(),
+                                          listPatients.get(i).getName(),
+                                          listPatients.get(i).getBirthdate());
+            }
+        }
+
+        for(int j=0; j < listPatients.size(); j++) {
+            for(int k=0; j < listPatients.get(j).getListOfCondition().size(); k++) {
+                if(!(patientData.conditionExists(listPatients.get(j).getHealthCardNumber(),
+                     listPatients.get(j).getListOfCondition().get(k).getTime()))) {
+                    Condition c = listPatients.get(j).getListOfCondition().get(k);
+                    patientData.insertCondition(listPatients.get(j).getHealthCardNumber(),
+                                                c.getSymptoms(), c.getSystolic(), c.getDiastolic(),
+                                                c.getTemperature(), c.getHeartRate(), c.getTime(),
+                                                c.getArrivalDate(), c.getSeenByDoctor());
+                }
+            }
+        }
+
+
+
 		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
 		alertDialog.setMessage(R.string.message_logout);
 		alertDialog.setIcon(R.drawable.logoff_button);
