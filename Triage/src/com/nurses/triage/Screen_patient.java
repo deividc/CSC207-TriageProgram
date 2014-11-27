@@ -147,6 +147,7 @@ public class Screen_patient extends Activity implements OnClickListener{
 		if (v == buttonSave) {
 			Intent intent = new Intent(Screen_patient.this, MainActivity.class);
 			com.nurses.triage.MainActivity.nurse.setArrayConditionPatient(patientFound.getHealthCardNumber(), patientFound.getListOfCondition());
+			com.nurses.triage.MainActivity.nurse.setArrayPrescriptionPatient(patientFound.getHealthCardNumber(), patientFound.getListOfPrescription());
 			finish();
 		}
 	}

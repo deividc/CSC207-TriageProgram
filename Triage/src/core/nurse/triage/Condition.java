@@ -70,7 +70,7 @@ public class Condition implements Serializable
      * 
      * @return
      */
-    public String getSymptons() {
+    public String getSymptoms() {
         return this.symptoms;
     }
     

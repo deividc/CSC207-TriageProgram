@@ -133,7 +133,7 @@ public class Patient implements Serializable
 		if (lastCondition.getSeenByDoctor() != true) {
         	if(lastCondition.getTemperature() >= 39.0)
             	urgency += 1;
-            if(lastCondition.getSystolic() >= 140 || lastCondition.getDiastolic() <= 40)
+            if(lastCondition.getSystolic() >= 140 || lastCondition.getDiastolic() >= 90)
             	urgency += 1;
             if(lastCondition.getHeartRate() >= 100 || lastCondition.getHeartRate() <= 50)
             	urgency += 1;
@@ -153,6 +153,15 @@ public class Patient implements Serializable
     
     public String toString2(){
         String str = healthCardNumber + ", " + name + ", " + birthdate;
+        return str;
+    }
+    
+    public String toStringUrgency(){
+    	String str = "";
+    	if (listOfCondition.get(listOfCondition.size() - 1).getSeenByDoctor() == false) {
+    		str = "Urgency: " + urgency() + '\n';
+    	}
+        
         return str;
     }
     
