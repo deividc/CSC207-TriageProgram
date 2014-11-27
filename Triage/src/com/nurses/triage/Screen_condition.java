@@ -29,10 +29,11 @@ public class Screen_condition extends Activity implements OnClickListener {
 	private EditText symptoms, temperature, bloodPressureSystolic, bloodPressureDiastolic, heartRate;
 	private CheckBox seenByDoctor;
 	
-	private int year, month, day, hour, minute;
+	private String year, month, day, hour, minute;
+	private int y, m, d;
 	private long time;
 	private boolean patientSeenByDoctor;
-	private String patientSymptoms, patientTemperature, patientBloodPressureSystolic, patientBloodPressureDiastolic, patientHeartRate, patientArrivalDate, minuteAsString, hourAsString;
+	private String patientSymptoms, patientTemperature, patientBloodPressureSystolic, patientBloodPressureDiastolic, patientHeartRate, patientArrivalDate;
 	Condition c;
 	
 	@Override
@@ -41,20 +42,19 @@ public class Screen_condition extends Activity implements OnClickListener {
 		setContentView(R.layout.activity_screen_condition);
 		
 		getCurrentDate(); //Adjust the time according to the device
-		setCurrentDate();
+		setCurrentDate(); //Fix date on the screen
 		
 		symptoms = (EditText) findViewById(R.id.editTextConditionSymptoms);
 		temperature = (EditText) findViewById(R.id.editTextConditionTemperature);
 		bloodPressureSystolic = (EditText) findViewById(R.id.editTextConditionSystolic);
 		bloodPressureDiastolic = (EditText) findViewById(R.id.editTextConditionDyastolic);
 		heartRate = (EditText) findViewById(R.id.editTextConditionHeartRate);
-		timeNow = (TextView) findViewById(R.id.textViewConditionTimeNow);
+		timeNow = (TextView) findViewById(R.id.textViewConditionDate);
 		seenByDoctor = (CheckBox) findViewById(R.id.checkBoxConditionSeenByDoctor);
-		
-		changeDate = (Button) findViewById(R.id.buttonConditionChangeTime);
-		changeDate.setOnClickListener(this);
-		
+		changeDate = (Button) findViewById(R.id.buttonConditionChangeDate);
 		save = (Button) findViewById(R.id.buttonConditionSave);
+		
+		changeDate.setOnClickListener(this);
 		save.setOnClickListener(this);
 		
 	}
@@ -103,7 +103,7 @@ public class Screen_condition extends Activity implements OnClickListener {
 		return super.onOptionsItemSelected(item);
 	}
 	
-	/*
+	/**
 	 * Get the date of the system through the class DateTime
 	 * 
 	 * @param		null
@@ -113,25 +113,23 @@ public class Screen_condition extends Activity implements OnClickListener {
 		
 		DateTime dt = new DateTime();
 		
-		hour = Integer.parseInt(dt.getHour24());
-		hourAsString = dt.getHour24();
-		minute = Integer.parseInt(dt.getMinute());
-		minuteAsString = dt.getMinute();
-		year = Integer.parseInt(dt.getYear());
-		month = Integer.parseInt(dt.getMonth());
-		day = Integer.parseInt(dt.getDay());
+		hour = dt.getHour24();
+		minute = dt.getMinute();
+		year = dt.getYear();
+		month = dt.getMonth();
+		day = dt.getDay();
 		
 	}
 	
-	/*
+	/**
 	 * Show the date on the screen
 	 * 
 	 * @param		null
 	 * @return		null
 	 */
 	public void setCurrentDate() {
-		TextView timeNow = (TextView) findViewById(R.id.textViewConditionTimeNow);
-		timeNow.setText(month + "-" + day + "-" + year + "		" + hourAsString + ":" + minuteAsString);
+		TextView timeNow = (TextView) findViewById(R.id.textViewConditionDate);
+		timeNow.setText(month + "-" + day + "-" + year + "		" + hour + ":" + minute);
 	}
 	
 	@Override
@@ -144,12 +142,17 @@ public class Screen_condition extends Activity implements OnClickListener {
 				@Override
 				public void onDateSet(DatePicker view, int year, int monthOfYear,
 						int dayOfMonth) {
-					Screen_condition.this.year = year;
-					Screen_condition.this.month = monthOfYear + 1;
-					Screen_condition.this.day = dayOfMonth;
-					Screen_condition.this.setCurrentDate();
+					Screen_condition.this.y = year;
+					Screen_condition.this.m = monthOfYear + 1;
+					Screen_condition.this.d = dayOfMonth;
+					
+					Screen_condition.this.year = Integer.toString(y);
+					Screen_condition.this.month = Integer.toString(m);
+					Screen_condition.this.day = Integer.toString(d);
+					
+			        Screen_condition.this.setCurrentDate();
 				}
-			}, year, month, day);
+			}, Integer.parseInt(year), Integer.parseInt(month)-1, Integer.parseInt(day));
 	        dpd.show();
 		}
 		

@@ -159,4 +159,21 @@ public class Condition implements Serializable
         
         return tmp;
     }
+    
+    public float getTemperature() {
+    	return this.temperature;
+    }
+    
+    public int getSystolic(){
+    	return this.bloodPressureSystolic;
+    }
+    
+    public int getDiastolic(){
+    	return this.bloodPressureDiastolic;
+    }
+    
+    public int getHeartRate(){
+    	return this.heartRate;
+    }
+
 }

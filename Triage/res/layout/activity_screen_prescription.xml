@@ -2,15 +2,131 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/triage_background_dark"
     tools:context="com.nurses.triage.Screen_prescription" >
 
-    <TextView
+    <ScrollView
+        android:id="@+id/scrollView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_above="@+id/linearLayout1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="168dp"
+            android:orientation="vertical"
+            android:padding="15dp" >
+
+            <TextView
+                android:id="@+id/textViewPrescriptionMedication"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:text="@string/medication"
+                android:textColor="@color/color_background_2"
+                android:textSize="@dimen/text_medium_size" />
+
+            <EditText
+                android:id="@+id/editTextPrescriptionMedication"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_gravity="top|left"
+                android:background="#ffffff"
+                android:ems="10"
+                android:hint="@string/description_medication"
+                android:inputType="textMultiLine"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:textSize="@dimen/text_medium_size" >
+
+                <requestFocus />
+            </EditText>
+
+            <TextView
+                android:id="@+id/TextViewPrescriptionInstruction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:paddingTop="15dp"
+                android:text="@string/instruction"
+                android:textColor="@color/color_background_2"
+                android:textSize="@dimen/text_medium_size" />
+
+            <EditText
+                android:id="@+id/EditTextPrescriptionInstruction"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_gravity="top|left"
+                android:background="#ffffff"
+                android:ems="10"
+                android:hint="@string/description_instruction"
+                android:inputType="textMultiLine"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:textSize="@dimen/text_medium_size" />
+
+            <TextView
+                android:id="@+id/textViewPrescriptionDateLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minWidth="@dimen/text_medium_size"
+                android:paddingTop="15dp"
+                android:text="@string/date_label"
+                android:textColor="@color/color_background_2"
+                android:textSize="@dimen/text_medium_size" />
+
+            <TextView
+                android:id="@+id/textViewPrescriptionDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/date"
+                android:textColor="@color/color_background_1"
+                android:textSize="@dimen/text_medium_size" />
+
+            <Button
+                android:id="@+id/magicButton_DontTouchIt"
+                android:layout_width="match_parent"
+                android:layout_height="105dp"
+                android:enabled="false"
+                android:focusable="false"
+                android:linksClickable="false"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:gravity="fill_horizontal"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/buttonPrescriptionChangeDate"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/color_background_4"
+            android:drawableTop="@drawable/line"
+            android:padding="0dp"
+            android:text="@string/change_date"
+            android:textColor="@color/text_white"
+            android:textSize="@dimen/text_medium_size" />
+
+        <Button
+            android:id="@+id/buttonPrescriptionSave"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/triage_background"
+            android:padding="0dp"
+            android:text="@string/save"
+            android:textColor="@color/text_white"
+            android:textSize="@dimen/text_medium_size" />
+    </LinearLayout>
 
 </RelativeLayout>

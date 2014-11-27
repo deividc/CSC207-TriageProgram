@@ -24,12 +24,13 @@
         <activity
             android:name="com.nurses.triage.Screen_patient"
             android:label="@string/title_activity_screen_patient"
-            android:theme="@style/Theme.SelectDate"
-            android:icon="@drawable/search_icon" >
+            android:theme="@style/TriageActionTheme"
+            android:icon="@drawable/patient_icon" >
         </activity>
         <activity
             android:name="com.nurses.triage.Screen_condition"
-            android:label="@string/title_activity_screen_condition" >
+            android:label="@string/title_activity_screen_condition"
+            android:icon="@drawable/syringe_icon" > 
         </activity>
         <activity
             android:name="com.nurses.triage.Screen_list_patients"
@@ -37,12 +38,13 @@
         </activity>
         <activity
             android:name="com.nurses.triage.Screen_list_conditions"
-            android:label="@string/title_activity_screen_list_conditions" >
+            android:label="@string/title_activity_screen_list_conditions"
+            android:icon="@drawable/patient_history_icon" >
         </activity>
         <activity
             android:name="com.nurses.triage.Screen_new_patient"
+            android:theme="@style/TriageActionTheme"
             android:label="@string/title_activity_screen_new_patient"
-            android:theme="@style/Theme.SelectDate"
             android:icon="@drawable/add_icon" >
         </activity>
         <activity
@@ -68,7 +70,8 @@
         </activity>
         <activity
             android:name="com.nurses.triage.Screen_prescription"
-            android:label="@string/title_activity_screen_prescription" >
+            android:label="@string/title_activity_screen_prescription"
+            android:icon="@drawable/pill_icon" >
         </activity>
     </application>
 

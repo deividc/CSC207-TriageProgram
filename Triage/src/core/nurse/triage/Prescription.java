@@ -1,14 +1,17 @@
 package core.nurse.triage;
 
+import java.io.Serializable;
+
 /*
 * @author  Deivid Cavalcante da Silva
 * @version 1.0.0
 * @date    2014-11-08
 */
 
-public class Prescription {
+public class Prescription implements Serializable {
 	String medication;
 	String instruction;
+	String datePrescription;
 	
 	/**
 	 * Constructor of the Class Prescription
@@ -62,5 +65,30 @@ public class Prescription {
 		this.instruction = instruction;
 	}
 	
+	/**
+	 * Getter Date of Prescription
+	 * 
+	 * @return date of prescription
+	 */
+	public String getDatePrescription() {
+		return datePrescription;
+	}
+
+	/**
+	 * Setter Date of Prescription
+	 * 
+	 * @param datePrescription
+	 */
+	public void setDatePrescription(String datePrescription) {
+		this.datePrescription = datePrescription;
+	}
+
+	public String toString() {
+		String tmp = "Medication: " + medication + '\n' +
+					 "Instructions: " + instruction + '\n' +
+					 "Date of Prescription: " + datePrescription + '\n';
+		return tmp;
+		
+	}
 	
 }

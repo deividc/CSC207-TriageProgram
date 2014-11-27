@@ -6,6 +6,7 @@ import com.example.triage.R;
 
 import core.nurse.triage.Condition;
 import core.nurse.triage.Patient;
+import core.nurse.triage.Prescription;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -28,7 +29,8 @@ public class Screen_patient extends Activity implements OnClickListener{
 	private DatePicker birthdayDate;
 	private EditText healthCardNumber, patientName;
 	
-	private static Patient patientFound;
+	private Patient patientFound;
+	private String userType;
 	
 	private AlertDialog.Builder alertDialog;
 	
@@ -39,22 +41,27 @@ public class Screen_patient extends Activity implements OnClickListener{
 		
 		Intent intent = getIntent();
 		patientFound = (Patient) intent.getSerializableExtra("PatientFound");
+		userType = intent.getStringExtra("UserType");
 		
 		healthCardNumber = (EditText) findViewById(R.id.editTextPatientHealthCardNumber);
-		patientName = (EditText) findViewById(R.id.editTextPatientName);
-		birthdayDate = (DatePicker) findViewById(R.id.datePatientPickerBirthdate);
+		healthCardNumber.setText(patientFound.getHealthCardNumber());
 		healthCardNumber.setTextColor(getResources().getColor(R.color.text_black));
+		
+		patientName = (EditText) findViewById(R.id.editTextPatientName);
+		patientName.setText(patientFound.getName());
 		patientName.setTextColor(getResources().getColor(R.color.text_black));
 		
-		healthCardNumber.setText(patientFound.getHealthCardNumber());
-		patientName.setText(patientFound.getName());
-		
+		birthdayDate = (DatePicker) findViewById(R.id.datePatientPickerBirthdate);
 		birthdayDate = (DatePicker) findViewById(R.id.datePatientPickerBirthdate);
 		String[] birthday = patientFound.getBirthdate().split("-");
 		birthdayDate.updateDate(Integer.parseInt(birthday[0]), Integer.parseInt(birthday[1]) - 1, Integer.parseInt(birthday[2]));
 		
 		newCondition = (Button) findViewById(R.id.buttonPatientNewCondition);
 		newCondition.setOnClickListener(this);
+		
+		if(userType.equals("physician")) {
+			newCondition.setText(R.string.prescription);
+		}
 		
 		patientHistory  = (Button) findViewById(R.id.buttonPatientHistory);
 		patientHistory.setOnClickListener(this);
@@ -114,7 +121,12 @@ public class Screen_patient extends Activity implements OnClickListener{
 		 * Button new Condition pressed
 		 */
 		if (v == newCondition) {
-			startActivityForResult(new Intent(Screen_patient.this, Screen_condition.class), 1); //
+			if (userType.equals("physician")) {
+				startActivityForResult(new Intent(Screen_patient.this, Screen_prescription.class), 2);
+			}
+			else {
+				startActivityForResult(new Intent(Screen_patient.this, Screen_condition.class), 1);
+			}
 		}
 		
 		/*
@@ -125,6 +137,7 @@ public class Screen_patient extends Activity implements OnClickListener{
 			intent.putExtra("Health Card Number", patientFound.getHealthCardNumber());
 			intent.putExtra("Name", patientFound.getName());
 			intent.putExtra("List Of Conditions", patientFound.getListOfCondition());
+			intent.putExtra("List Of Prescriptions", patientFound.getListOfPrescription());
 			startActivity(intent);
 		}
 		
@@ -147,6 +160,12 @@ public class Screen_patient extends Activity implements OnClickListener{
 				if (resultCode == RESULT_OK) {
 					Condition c = (Condition) data.getSerializableExtra("New Condition");
 					patientFound.newCondition(c);
+					break;
+				}
+			case 2:
+				if (resultCode == RESULT_OK) {
+					Prescription p = (Prescription) data.getSerializableExtra("New Prescription");
+					patientFound.newPrescription(p);
 					break;
 				}
 		}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- the theme applied to the application or activity -->
+    <style name="TriageActionTheme"
+           parent="@android:style/Theme.Holo.Light.DarkActionBar">
+        <item name="android:actionBarStyle">@style/TriageActionBar</item>
+        <!--  
+        <item name="android:actionBarTabTextStyle">@style/TriageBarTabText</item>
+        <item name="android:actionMenuTextColor">@color/color_background_2</item>
+        -->
+        <item name="android:editTextStyle">@style/Widget.EditText.Black</item>
+    </style>
+
+    <!-- ActionBar styles -->
+    <style name="TriageActionBar"
+           parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">@drawable/triage_background_dark</item>
+    </style>
+    
+    <!--
+    <style name="MyActionBarTitleText"
+           parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/text_black</item>
+    </style>
+
+    <style name="TriageBarTabText"
+           parent="@android:style/Widget.Holo.ActionBar.TabText">
+        <item name="android:textColor">@color/text_black</item>
+    </style>
+    -->
+    
+    <style name="Widget.EditText.Black" parent="@android:style/Widget.EditText">
+        <item name="android:textColor">@color/color_background_2</item>
+    </style>
+    
+</resources>

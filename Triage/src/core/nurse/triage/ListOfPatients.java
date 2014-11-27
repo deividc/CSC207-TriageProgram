@@ -2,13 +2,14 @@ package core.nurse.triage;
 
 /*
  * @author  Deivid Cavalcante da Silva
- * @version 1.0.3
- * @date    2014-11-08
+ * @version 1.0.4
+ * @date    2014-11-26
  */
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ListOfPatients
+public class ListOfPatients implements Serializable
 {
     private ArrayList<Patient> listOfPatients;
     
@@ -36,7 +37,7 @@ public class ListOfPatients
         listOfPatients.clear();
     }
     
-    /*
+    /**
      * Return a patient that matches the health card number
      * 
      * @param		health card number
@@ -53,5 +54,23 @@ public class ListOfPatients
             }
         }
         return tmp;
+    }
+    
+    /**
+     * Getter List of Patients
+     * 
+     * @return		listOfPatients
+     */
+    public ArrayList<Patient> getListOfPatients() {
+		return listOfPatients;
+	}
+
+	/**
+     * Setter List of Patients
+     * 
+     * @param listOfPatients
+     */
+    public void setListOfPatients(ArrayList<Patient> listOfPatients) {
+    	this.listOfPatients = listOfPatients;
     }
 }

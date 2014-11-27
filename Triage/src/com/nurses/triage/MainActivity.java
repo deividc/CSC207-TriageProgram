@@ -40,7 +40,8 @@ public class MainActivity extends Activity implements OnClickListener{
 	private Button buttonNewPatient, buttonSearchPatient, buttonListOfPatients, buttonLoadData;
 	private EditText editTextSearchHealthCardNumber;
 	
-	
+	private String userType;
+	private String username;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +64,8 @@ public class MainActivity extends Activity implements OnClickListener{
          * set up the main screen according to the user data
          */
         Intent intent = this.getIntent();
-        String username = intent.getStringExtra("Username");
-        String userType = intent.getStringExtra("UserType");
+        username = intent.getStringExtra("Username");
+        userType = intent.getStringExtra("UserType");
         ImageView userImage = (ImageView) findViewById(R.id.imageViewMainUserImage);
         TextView userName = (TextView) findViewById(R.id.textViewMainUsername);
         userName.setText(username);
@@ -115,7 +116,7 @@ public class MainActivity extends Activity implements OnClickListener{
     	 */
     	if (v == buttonSearchPatient) {
     		alertDialogSearchPatient = new AlertDialog.Builder(this);
-    		alertDialogSearchPatient.setIcon(R.drawable.magnifying_glass);
+    		alertDialogSearchPatient.setIcon(R.drawable.search_icon);
     		alertDialogSearchPatient.setTitle(R.string.search_patient);
     		alertDialogSearchPatient.setMessage(R.string.type_health_card_number);
     		
@@ -135,6 +136,7 @@ public class MainActivity extends Activity implements OnClickListener{
         			  
         			  if (patientFound.getHealthCardNumber().equals(numberHCN)) {
         				  intent.putExtra("PatientFound", patientFound);
+        				  intent.putExtra("UserType", userType);
             			  
             			  startActivity(intent); //Result changes in patient conditions
             			  
@@ -155,7 +157,9 @@ public class MainActivity extends Activity implements OnClickListener{
     	 * Button list of patients pressed
     	 */
 		if (v == buttonListOfPatients) {
-			startActivity(new Intent(MainActivity.this, Screen_list_patients.class));
+			Intent intent = new Intent(MainActivity.this, Screen_list_patients.class);
+			intent.putExtra("List of Patients", nurse.getListOfPatients());
+			startActivity(intent);
 		}
 		
 		/*

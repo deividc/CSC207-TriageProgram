@@ -75,6 +75,11 @@ public class Nurse implements Serializable
         return listOfPatients.viewPatientInfo(healthCardNumber);
     }
     
+    /*
+     * To depreciate when database is working fine
+     * 
+     */
+    
     /**
      * Record the list of patient
      * 
@@ -118,6 +123,26 @@ public class Nurse implements Serializable
         ioc.conditionsFromFile(data);
     }
     
+    //********************************************************
+    
+    /**
+     * Getter List of Patients
+     * 
+     * @return
+     */
+    public ListOfPatients getListOfPatients() {
+    	return this.listOfPatients;
+    }
+    
+    /**
+     * Setter ArrayList of patients
+     * 
+     * @param listOfPatients
+     */
+    public void setListOfPatients(ArrayList<Patient> listOfPatients) {
+    	this.listOfPatients.setListOfPatients(listOfPatients);
+    }
+    
     /**
      * return a list of patients
      * 
@@ -156,7 +181,41 @@ public class Nurse implements Serializable
     public void setArrayConditionPatient(String healthCardNumber, ArrayList conditions) {
     	for(int i = 0; i < listOfPatients.size(); i++) {
             if(healthCardNumber.equals(listOfPatients.get(i).getHealthCardNumber())) {
-                listOfPatients.get(i).setListOfConditions(conditions);
+                listOfPatients.get(i).setListOfCondition(conditions);
+            }
+        }
+    }
+    
+    
+    /**
+     * Search for the list of prescription through the health card number
+     * 
+     * @param		health card number
+     * @return		arraylist of conditions
+     */
+    public ArrayList prescriptionOfPatient(String healthCardNumber) {
+        ArrayList tmp = new ArrayList();
+        
+        for(int i = 0; i < listOfPatients.size(); i++) {
+            if(healthCardNumber.equals(listOfPatients.get(i).getHealthCardNumber())) {
+                tmp = listOfPatients.get(i).getListOfPrescription();
+            }
+        }
+        
+        return tmp;
+    }
+    
+    /**
+     * Set array of prescriptions for one specific patient that matches the health card number
+     * 
+     * @param		health card number
+     * @param		array conditions
+     * @return		null
+     */
+    public void setArrayPrescriptionPatient(String healthCardNumber, ArrayList prescriptions) {
+    	for(int i = 0; i < listOfPatients.size(); i++) {
+            if(healthCardNumber.equals(listOfPatients.get(i).getHealthCardNumber())) {
+                listOfPatients.get(i).setListOfPrescription(prescriptions);
             }
         }
     }

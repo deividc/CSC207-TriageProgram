@@ -4,11 +4,15 @@ import java.util.ArrayList;
 
 import com.example.triage.R;
 import core.nurse.triage.Condition;
+import core.nurse.triage.Prescription;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,14 +22,17 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class Screen_list_conditions extends Activity implements OnItemClickListener  {
+public class Screen_list_conditions extends Activity {
 
 	private TextView healthCardNumber, patientName;
 	private ListView listViewConditions;
 	
 	private ArrayList<Condition> listOfConditions;
+	private ArrayList<Prescription> listOfPrescriptions;
 	
-	ArrayList<String> dateConditions;
+	ArrayList<String> dateConditions, datePrescriptions;
+	
+	int idAdapterCondition, idAdapterPrescription;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +44,14 @@ public class Screen_list_conditions extends Activity implements OnItemClickListe
 		healthCardNumber = (TextView) findViewById(R.id.textViewListConditionsHealthCardNumber);
 		patientName = (TextView) findViewById(R.id.textViewListConditionsPatientName);
 		
-		healthCardNumber.setText("Health Card Number: " + intent.getCharSequenceExtra("Health Card Number"));
-		patientName.setText("Name: " + intent.getCharSequenceExtra("Name"));
+		healthCardNumber.setText(intent.getCharSequenceExtra("Health Card Number"));
+		patientName.setText(intent.getCharSequenceExtra("Name"));
 		
 		listOfConditions = (ArrayList<Condition>) intent.getSerializableExtra("List Of Conditions");
+		listOfPrescriptions = (ArrayList<Prescription>) intent.getSerializableExtra("List Of Prescriptions");
 		
 		showConditionsList();
+		showPrescriptionsList();
 	}
 
 	@Override
@@ -68,24 +77,64 @@ public class Screen_list_conditions extends Activity implements OnItemClickListe
 		
 		dateConditions = new ArrayList<String>();
 		
-		for (int i = 0; i < listOfConditions.size(); i++) {
+		for (int i = listOfConditions.size() - 1; i >= 0 ; i--) {
 			dateConditions.add(listOfConditions.get(i).getArrivalDate());
 		}
 		
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, dateConditions);
-		
 		listViewConditions = (ListView) findViewById(R.id.listViewListConditions);
 		listViewConditions.setAdapter(adapter);
-		listViewConditions.setOnItemClickListener(this);
-	}
+		listViewConditions.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-	@Override
-	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				AlertDialog.Builder showCondition = new AlertDialog.Builder(Screen_list_conditions.this);
+				showCondition.setIcon(R.drawable.history_magnifying);
+				showCondition.setTitle(dateConditions.get(arg2).toString());
+				showCondition.setMessage(listOfConditions.get(listOfConditions.size() - arg2 - 1).toString2());
+				showCondition.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+					}
+				});
+				showCondition.show();
+				
+			}
+		});
+	}
+	
+public void showPrescriptionsList() {
 		
-		AlertDialog.Builder showCondition = new AlertDialog.Builder(this);
-		showCondition.setTitle(dateConditions.get(arg2).toString());
-		showCondition.setMessage(listOfConditions.get(arg2).toString2());
-		showCondition.show();
+		datePrescriptions = new ArrayList<String>();
 		
+		for (int i = listOfPrescriptions.size() - 1; i >= 0 ; i--) {
+			datePrescriptions.add(listOfPrescriptions.get(i).getDatePrescription());
+		}
+		
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, datePrescriptions);
+		
+		listViewConditions = (ListView) findViewById(R.id.listViewListPrescriptions);
+		listViewConditions.setAdapter(adapter);
+		listViewConditions.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				AlertDialog.Builder showCondition = new AlertDialog.Builder(Screen_list_conditions.this);
+				showCondition.setIcon(R.drawable.history_magnifying);
+				showCondition.setTitle(datePrescriptions.get(arg2).toString());
+				showCondition.setMessage(listOfPrescriptions.get(listOfPrescriptions.size() - arg2 - 1).toString());
+				showCondition.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+					}
+				});
+				showCondition.show();
+				
+			}
+		});
 	}
 }

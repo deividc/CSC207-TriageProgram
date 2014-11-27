@@ -1,172 +1,194 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@drawable/triage_background_dark"
+    android:orientation="vertical"
     tools:context="com.nurses.triage.Screen_condition" >
 
     <ScrollView
         android:id="@+id/scrollView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/linearLayout1"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true" >
+        android:layout_alignParentRight="true" >
 
         <LinearLayout
+            android:id="@+id/test"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:padding="15dp" >
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/textViewConditionSymptoms"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="15dp" >
+                android:layout_gravity="left"
+                android:paddingBottom="10dp"
+                android:text="@string/symptoms"
+                android:textColor="@color/color_background_2"
+                android:textSize="@dimen/text_medium_size" />
 
-                <TextView
-                    android:id="@+id/textViewConditionSymptoms"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="10dp"
-                    android:text="@string/symptoms"
-                    android:textColor="@color/color_background_2"
-                    android:textSize="@dimen/text_medium_size" />
+            <EditText
+                android:id="@+id/editTextConditionSymptoms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal"
+                android:background="#ffffff"
+                android:ems="10"
+                android:hint="@string/description_symptoms"
+                android:inputType="text"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:textSize="@dimen/text_medium_size" />
 
-                <EditText
-                    android:id="@+id/editTextConditionSymptoms"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#ffffff"
-                    android:ems="10"
-                    android:hint="@string/description_symptoms"
-                    android:inputType="text"
-                    android:paddingBottom="5dp"
-                    android:paddingTop="5dp"
-                    android:textSize="@dimen/text_medium_size" />
+            <TextView
+                android:id="@+id/textViewConditionTemperature"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:paddingBottom="10dp"
+                android:paddingTop="15dp"
+                android:text="@string/temperature"
+                android:textColor="@color/color_background_2"
+                android:textSize="@dimen/text_medium_size" />
 
-                <TextView
-                    android:id="@+id/textViewConditionTemperature"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="10dp"
-                    android:paddingTop="15dp"
-                    android:text="@string/temperature"
-                    android:textColor="@color/color_background_2"
-                    android:textSize="@dimen/text_medium_size" />
+            <EditText
+                android:id="@+id/editTextConditionTemperature"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal"
+                android:background="@color/text_white"
+                android:ems="10"
+                android:hint="@string/celsius"
+                android:inputType="numberSigned"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:textSize="@dimen/text_medium_size" />
 
-                <EditText
-                    android:id="@+id/editTextConditionTemperature"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/text_white"
-                    android:ems="10"
-                    android:hint="@string/celsius"
-                    android:inputType="numberSigned"
-                    android:paddingBottom="5dp"
-                    android:paddingTop="5dp"
-                    android:textSize="@dimen/text_medium_size" />
+            <TextView
+                android:id="@+id/TextViewConditionBloodPressure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:paddingBottom="10dp"
+                android:paddingTop="15dp"
+                android:text="@string/blood_pressure"
+                android:textColor="@color/color_background_2"
+                android:textSize="@dimen/text_medium_size" />
 
-                <TextView
-                    android:id="@+id/TextViewConditionBloodPressure"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="10dp"
-                    android:paddingTop="15dp"
-                    android:text="@string/blood_pressure"
-                    android:textColor="@color/color_background_2"
-                    android:textSize="@dimen/text_medium_size" />
+            <EditText
+                android:id="@+id/editTextConditionSystolic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal"
+                android:background="#ffffff"
+                android:ems="10"
+                android:hint="@string/systolic"
+                android:inputType="number"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:textSize="@dimen/text_medium_size" />
 
-                <EditText
-                    android:id="@+id/editTextConditionSystolic"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#ffffff"
-                    android:ems="10"
-                    android:hint="@string/systolic"
-                    android:inputType="number"
-                    android:paddingBottom="5dp"
-                    android:paddingTop="5dp"
-                    android:textSize="@dimen/text_medium_size" />
+            <EditText
+                android:id="@+id/editTextConditionDyastolic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal"
+                android:layout_marginTop="12dp"
+                android:background="#ffffff"
+                android:ems="10"
+                android:hint="@string/diastolic"
+                android:inputType="number"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:textSize="@dimen/text_medium_size" />
 
-                <EditText
-                    android:id="@+id/editTextConditionDyastolic"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:background="#ffffff"
-                    android:ems="10"
-                    android:hint="@string/diastolic"
-                    android:inputType="number"
-                    android:paddingBottom="5dp"
-                    android:paddingTop="5dp"
-                    android:textSize="@dimen/text_medium_size" />
+            <TextView
+                android:id="@+id/textViewConditionHeartRate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:paddingBottom="10dp"
+                android:paddingTop="15dp"
+                android:text="@string/heart_rate"
+                android:textColor="@color/color_background_2"
+                android:textSize="@dimen/text_medium_size" />
 
-                <TextView
-                    android:id="@+id/textViewConditionHeartRate"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="10dp"
-                    android:paddingTop="15dp"
-                    android:text="@string/heart_rate"
-                    android:textColor="@color/color_background_2"
-                    android:textSize="@dimen/text_medium_size" />
+            <EditText
+                android:id="@+id/editTextConditionHeartRate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal"
+                android:background="#ffffff"
+                android:ems="10"
+                android:hint="@string/heart_rate"
+                android:inputType="number"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:textSize="@dimen/text_medium_size" />
 
-                <EditText
-                    android:id="@+id/editTextConditionHeartRate"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#ffffff"
-                    android:ems="10"
-                    android:hint="@string/heart_rate"
-                    android:inputType="number"
-                    android:paddingBottom="5dp"
-                    android:paddingTop="5dp"
-                    android:textSize="@dimen/text_medium_size" />
+            <TextView
+                android:id="@+id/textViewConditionDateLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:minWidth="@dimen/text_medium_size"
+                android:paddingTop="15dp"
+                android:text="@string/date"
+                android:textColor="@color/color_background_2"
+                android:textSize="@dimen/text_medium_size" />
 
-                <TextView
-                    android:id="@+id/textViewConditionTime"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minWidth="@dimen/text_medium_size"
-                    android:paddingTop="15dp"
-                    android:text="@string/time"
-                    android:textColor="@color/color_background_2"
-                    android:textSize="@dimen/text_medium_size" />
+            <TextView
+                android:id="@+id/textViewConditionDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:text="@string/date"
+                android:textColor="@color/color_background_1"
+                android:textSize="@dimen/text_medium_size" />
 
-                <TextView
-                    android:id="@+id/textViewConditionTimeNow"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/time_now"
-                    android:textColor="@color/color_background_1"
-                    android:textSize="@dimen/text_medium_size" />
+            <CheckBox
+                android:id="@+id/checkBoxConditionSeenByDoctor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:button="@drawable/triage_checkbox"
+                android:hint="@string/seen_by_doctor"
+                android:paddingLeft="10dp"
+                android:text="@string/seen_by_doctor"
+                android:textColor="@color/color_background_2" />
 
-                <CheckBox
-                    android:id="@+id/checkBoxConditionSeenByDoctor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:button="@drawable/triage_checkbox"
-                    android:hint="@string/seen_by_doctor"
-                    android:paddingLeft="10dp"
-                    android:text="@string/seen_by_doctor"
-                    android:textColor="@color/color_background_2" />
+            <Button
+                android:id="@+id/magicButton_DontTouchIt"
+                android:layout_width="match_parent"
+                android:layout_height="105dp"
+                android:enabled="false"
+                android:focusable="false"
+                android:linksClickable="false"
+                android:text="Button"
+                android:visibility="invisible" />
 
-            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
         android:orientation="vertical" >
 
         <Button
-            android:id="@+id/buttonConditionChangeTime"
+            android:id="@+id/buttonConditionChangeDate"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="@drawable/triage_background_dark"
-            android:text="@string/change_time"
+            android:layout_height="40dp"
+            android:background="@color/color_background_4"
+            android:drawableTop="@drawable/line"
+            android:text="@string/change_date"
             android:textColor="@color/text_white"
             android:textSize="@dimen/text_medium_size" />
 
@@ -178,10 +200,6 @@
             android:text="@string/save"
             android:textColor="@color/text_white"
             android:textSize="@dimen/text_medium_size" />
-
     </LinearLayout>
-            
-        </LinearLayout>
-    </ScrollView>
-    
+
 </RelativeLayout>
