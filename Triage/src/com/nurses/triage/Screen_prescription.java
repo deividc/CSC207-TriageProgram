@@ -24,9 +24,15 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
-
+/**
+ * A class with methods to deal with most of the features needed to
+ * display screen of prescription.
+ */
 public class Screen_prescription extends Activity implements OnClickListener {
 
+	/**
+     * Instance variables of Screen_prescription.
+     */
 	private Button save;
 	private EditText medication, instruction;
 	private TextView datePrescription;
@@ -36,6 +42,10 @@ public class Screen_prescription extends Activity implements OnClickListener {
 	
 	public Button changeDate;
 	
+	/**
+	 * On create, fix date and set up EditText for perscription
+	 * information.
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -73,6 +83,13 @@ public class Screen_prescription extends Activity implements OnClickListener {
 		return super.onOptionsItemSelected(item);
 	}
 
+	/**
+	 * On click, handle if date is changed, then set up alerts.
+	 * 
+	 * @param	view
+	 * 
+	 * @return	result
+	 */
 	@Override
 	public void onClick(View v) {
 		

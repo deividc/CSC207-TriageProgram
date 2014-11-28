@@ -21,8 +21,15 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
+/**
+ * A class with methods to deal with most of the features needed to
+ * display the screen of the patients.
+ */
 public class Screen_new_patient extends Activity implements OnClickListener {
 
+	/**
+     * Instance variables of Screen_new_patient.
+     */
 	private Button  saveNewPatientInfo;
 	private DatePicker birthdayDate;
 	private EditText healthCardNumber, patientName;
@@ -32,6 +39,9 @@ public class Screen_new_patient extends Activity implements OnClickListener {
 	
 	private AlertDialog.Builder alertDialog;
 	
+	/**
+     * On create, set up the buttons and edittexts.
+     */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -49,6 +59,9 @@ public class Screen_new_patient extends Activity implements OnClickListener {
 		
 	}
 
+	/**
+     * On back button, inform of data loss.
+     */
 	@Override
 	public void onBackPressed() {
 		alertDialog = new AlertDialog.Builder(this);
@@ -93,6 +106,9 @@ public class Screen_new_patient extends Activity implements OnClickListener {
 		return super.onOptionsItemSelected(item);
 	}
 	
+	/**
+     * On click, check if correct format of patient data.
+     */
 	public void onClick(View v) {
 		
 		/*

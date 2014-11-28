@@ -1,12 +1,15 @@
 package core.nurse.triage;
-/*
- * @author  Deivid Cavalcante da Silva
- * @version 1.0.6
+
+/**
+ * This class is responsible for acting as the mediator between listOfPatients
+ * and tells DataRecorder what to record and what to load.
+ *   
+ * @version 1.0.4
  * @date    2014-11-08
  */
-
 public class InputOutputController
 {
+	// Instance variables.
     private ListOfPatients listOfPatients;
     
     public InputOutputController(ListOfPatients list)
@@ -15,9 +18,10 @@ public class InputOutputController
     }
     
     /**
-     * Save the List of Patients on a file
+     * Save the List of Patients on a file.
      * 
-     * @return	data of all patients to save
+     * @param	filename	Path of the list of patients file
+     * @return	null
      */
     public String savePatients()
     {
@@ -31,9 +35,10 @@ public class InputOutputController
     }
     
     /**
-     * Save the list of conditions of each patient on a file
+     * Save the list of conditions of each patient on a file.
      * 
-     * @return	data of all conditions to save
+     * @param	filename	the path of the file conditions
+     * @return	null
      */
     public String saveConditions()
     {
@@ -48,9 +53,10 @@ public class InputOutputController
     }
     
     /**
-     *  Recover the patients' information from records
+     *  Recover the patients' information from records.
      *  
-     *  @param	data of all patients
+     *  @param	data	the patient data
+     *  @return	null
      */
     public void patientsFromFile(String data)
     {
@@ -99,9 +105,10 @@ public class InputOutputController
     }
     
     /**
-     *  Recover history of conditions of each patient from records
+     *  Recover history of conditions of each patient from records.
      *  
-     *  @param	data of all conditions
+     *  @param	filename	the filename of history of conditions
+     *  @return	null
      */
     public void conditionsFromFile(String data)
     {

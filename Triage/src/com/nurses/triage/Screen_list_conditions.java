@@ -22,8 +22,16 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+/**
+ * A class with methods to deal with most displaying the list of
+ * conditions screen which also includes the prescriptions display
+ * and all its required methods including the values and the buttons.
+ */
 public class Screen_list_conditions extends Activity {
-
+	
+	/**
+     * Instance variables of Screen_list_conditions.
+     */
 	private TextView healthCardNumber, patientName;
 	private ListView listViewConditions;
 	
@@ -34,6 +42,9 @@ public class Screen_list_conditions extends Activity {
 	
 	int idAdapterCondition, idAdapterPrescription;
 	
+	/**
+     * On create, get patient info.
+     */    
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -104,7 +115,14 @@ public class Screen_list_conditions extends Activity {
 			}
 		});
 	}
-	
+
+/**
+ * Show the prescriptions list.
+ *
+ * @param	null
+ *
+ * @return	prescriptions list
+ */    
 public void showPrescriptionsList() {
 		
 		datePrescriptions = new ArrayList<String>();

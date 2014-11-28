@@ -2,14 +2,17 @@ package core.nurse.triage;
 
 import java.io.Serializable;
 
-/*
- * @author  Deivid Cavalcante da Silva
- * @version 1.0.5
+/**
+ * This class is responsible for setting and storing patient vitals and time info in memory.
+ * 
+ * @version 1.0.2
  * @date    2014-11-08
  */
-
 public class Condition implements Serializable
 {
+	/**
+	 * Instance variables.
+	 */
     private String symptoms;
     private float temperature;
     private int bloodPressureDiastolic;
@@ -57,35 +60,39 @@ public class Condition implements Serializable
     }
     
     /**
-     * Setter Symptoms
+     * Setter for the Symptoms.
      * 
      * @param symptoms
+     * @return null
      */
     public void setSymptons(String symptoms) {
         this.symptoms = symptoms;
     }
     
     /**
-     * Getter Symptoms
+     * Getter for Symptoms.
      * 
-     * @return
+     * @param null
+     * @return symptoms
      */
     public String getSymptoms() {
         return this.symptoms;
     }
     
     /**
-     * Setter Arrival Date
+     * Setter for Arrival Date.
      * 
      * @param arrivalDate
+     * @return null
      */
     public void setArrivalDate(String arrivalDate) {
         this.arrivalDate = arrivalDate;
     }
     
     /**
-     * 	Getter Arrival Date
+     * 	Getter for Arrival Date.
      * 
+     * @param	null
      * @return	 arrival date
      */
     public String getArrivalDate() {
@@ -93,34 +100,38 @@ public class Condition implements Serializable
     }
     
     /**
-     * Setter SeenByDoctor
+     * Setter for if seen by doctor.
      * 
      * @param seenByDoctor
+     * @return null
      */
     public void seenByDoctor(boolean seenByDoctor) {
         this.seenByDoctor = seenByDoctor;
     }
     
     /**
-     * Getter SeenByDoctor
+     * Getter for if seen by doctor.
      * 
      * @return	boolean seen by doctor
+     * @param	null
      */
     public boolean getSeenByDoctor() {
         return this.seenByDoctor;
     }
     
     /**
-     * Setter Time
+     * Setter for Time.
      * 
      * @param time
+     * @return null
      */
     public void setTime(long time) {
         this.time = time;
     }
     /**
-     * Getter Time
+     * Getter for Time.
      * 
+     * @param	null
      * @return	time
      */
     public long getTime() {
@@ -128,7 +139,10 @@ public class Condition implements Serializable
     }
     
     /**
-     * Method specific for recording data in text files
+     * Method specific for recording data in text files.
+     * 
+     * @param	null
+     * @return	conditions for display to string.
      */
     public String toString(){
         String tmp = symptoms + ";" + temperature + ";" + bloodPressureDiastolic + ";" + bloodPressureSystolic + ";" + heartRate + ";" + arrivalDate + ";" + seenByDoctor + ";" + time;
@@ -138,6 +152,7 @@ public class Condition implements Serializable
     /**
      * Method that recover and setup the data for showing in the screen
      * 
+     * @param	null
      * @return	information related to the condition
      */
     public String toString2(){
@@ -160,18 +175,46 @@ public class Condition implements Serializable
         return tmp;
     }
     
+    /**
+     * Return the temperature.
+     *
+     * @param	null
+     *
+     * @return	temperature
+     */
     public float getTemperature() {
     	return this.temperature;
     }
     
+    /**
+     * Return the systolic blood pressure.
+     *
+     * @param	null
+     *
+     * @return	systolic blood pressure
+     */
     public int getSystolic(){
     	return this.bloodPressureSystolic;
     }
     
+    /**
+     * Return the diastolic blood pressure.
+     *
+     * @param	null
+     *
+     * @return	diastolic blood pressure.
+     */
     public int getDiastolic(){
     	return this.bloodPressureDiastolic;
     }
     
+    /**
+     * Return the heart rate.
+     *
+     * @param	null
+     *
+     * @return	heart rate
+     */
     public int getHeartRate(){
     	return this.heartRate;
     }

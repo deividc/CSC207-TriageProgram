@@ -1,11 +1,12 @@
 package core.nurse.triage;
-/*
- /*
- * @author  Deivid Cavalcante da Silva
- * @version 1.0.6
- * @date    2014-11-08
- */
 
+
+/**
+ * This class is responsible for containing the patient information and urgency
+ * for later implementation of more features. 
+ * 
+ * @version 1.0.2
+ */
 import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -14,12 +15,16 @@ import java.util.Calendar;
 
 public class Patient implements Serializable
 {
+	// Instance variables.
     private String healthCardNumber;
     private String name;
     private String birthdate;
     private ArrayList<Condition> listOfCondition;
     private ArrayList<Prescription> listOfPrescription;
     
+    /**
+     * Constructor for objects of class Patient.
+     */
     public Patient(){
         this.healthCardNumber = "";
         this.name = "";
@@ -28,11 +33,12 @@ public class Patient implements Serializable
     }
     
     /**
-     * Create a new Patient
+     * Create a new Patient.
      * 
      * @param       patient's health card number
      * @param       patient's name
      * @param       patient's birthdate
+     * @return	null
      */
     public Patient(String healthCardNumber, String name, String birthdate){
         this.healthCardNumber = healthCardNumber;
@@ -43,54 +49,81 @@ public class Patient implements Serializable
     }
     
     /**
+     * Add new condition.
      * 
+     * @param	cond	new condition
+     * @return	null
      */
     public void newCondition(Condition cond){
         listOfCondition.add(cond);
     }
     
     /**
+     * Get health card number.
      * 
+     * @param	null
+     * @return	health card number
      */
     public String getHealthCardNumber(){
         return this.healthCardNumber;
     }
     
     /**
+     * Set health card number.
      * 
+     * @param	health card number
+     * @return	null
      */
     public void setHealthCardNumber(String healthCardNumber){
         this.healthCardNumber = healthCardNumber;
     }
     
     /**
+     * Get the name.
      * 
+     * @param	null
+     * @return	name
      */
     public String getName(){
         return this.name;
     }
     
     /**
+     * Set the name.
      * 
+     * @param	name
+     * @return	null
      */
     public void setName(String name){
         this.name = name;
     }
     
     /**
+     * Set the birthdate.
      * 
+     * @param	birthdate
+     * @return	null
      */
     public void setBirthdate(String birthdate){
         this.birthdate = birthdate;
     }
     
     /**
+     * Get the birthdate.
      * 
+     * @param	null
+     * @return	birthday
      */
     public String getBirthdate(){
         return this.birthdate;
     }
     
+    /**
+     * Get the age.
+     * 
+     * @param	null
+     * @return	age
+     */
     public int getAge() {
     	String[] bd = birthdate.split("-");
 
@@ -112,8 +145,9 @@ public class Patient implements Serializable
     }
     
     /**
-     * Calculate the urgency of a patient based on his/her information
+     * Calculate the urgency of a patient based on his/her information.
      * 
+     * @param	null
      * @return		urgency
      */
     public int urgency() {
@@ -144,18 +178,33 @@ public class Patient implements Serializable
     }
     
     /**
+     * Get patient info to string for file.
      * 
+     * @param	null
+     * @return	info in string
      */
     public String toString(){
         String str = healthCardNumber + "," + name + "," + birthdate + "\n";
         return str;
     }
     
+    /**
+     * Get patient info to string for screen.
+     * 
+     * @param	null
+     * @return	info in string
+     */
     public String toString2(){
         String str = healthCardNumber + ", " + name + ", " + birthdate;
         return str;
     }
     
+    /**
+     * Get urgency to string urgency.
+     * 
+     * @param	null
+     * @return	urgency string
+     */
     public String toStringUrgency(){
     	String str = "";
     	if (listOfCondition.get(listOfCondition.size() - 1).getSeenByDoctor() == false) {
@@ -166,9 +215,10 @@ public class Patient implements Serializable
     }
     
     /**
+     * Get conditions and healthcard number to string.
      * 
-     * 
-     * @return
+     * @param	null
+     * @return	string of info
      */
     public String conditionsToString(){
         StringBuilder tmp = new StringBuilder();
@@ -179,7 +229,7 @@ public class Patient implements Serializable
     }
     
     /**
-     * Get the list of Condition of the patient
+     * Get the list of Condition of the patient.
      * 
      * @param		list of conditions
      * @return      null
@@ -189,7 +239,7 @@ public class Patient implements Serializable
     }
     
     /**
-     * Get the list of Condition of the patient
+     * Get the list of Condition of the patient.
      * 
      * @param		null
      * @return      list of conditions
@@ -199,7 +249,7 @@ public class Patient implements Serializable
     }
     
     /**
-     * Set the list of Prescription of the patient
+     * Set the list of Prescription of the patient.
      * 
      * @param		arraylist of prescriptions
      * @return		null
@@ -209,7 +259,7 @@ public class Patient implements Serializable
     }
     
     /**
-     * Get the list of Prescription of the specific patient
+     * Get the list of Prescription of the specific patient.
      * 
      * @param		null
      * @return      list of conditions
@@ -219,9 +269,10 @@ public class Patient implements Serializable
     }
     
     /**
-     *  Receive a new Prescription for the patient
+     *  Receive a new Prescription for the patient.
      *  
      *  @param		prescription
+     *  @return null
      */
     public void newPrescription(Prescription p){
     	listOfPrescription.add(p);

@@ -7,6 +7,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+/**
+ * A class with methods to deal with displaying the about page, with comical
+ * representations of the team members of this project.
+ */
 public class Screen_about extends Activity {
 
 	@Override

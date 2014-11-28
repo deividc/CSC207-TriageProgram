@@ -25,8 +25,15 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
+/**
+ * A class with methods to deal with most of the features needed to
+ * display the screen of the login.
+ */
 public class Screen_login extends Activity  implements OnClickListener{
 
+	/**
+     * Instance variables of Screen_login.
+     */
 	private static ArrayList<String[]> usersList = new ArrayList<String[]>();
 	
 	private static String username, password, userType;
@@ -35,6 +42,9 @@ public class Screen_login extends Activity  implements OnClickListener{
 	private EditText typedUsername, typedPassword;
 	private Button buttonLogin;
 	
+	/**
+	 * On create, load login data.
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
@@ -51,7 +61,10 @@ public class Screen_login extends Activity  implements OnClickListener{
 		buttonLogin.setOnClickListener(this);
 		
 	}
-
+	
+	/**
+	 * On click, check if user exists, then login user.
+	 */
 	@Override
 	public void onClick(View v) {
     	/*
@@ -89,6 +102,13 @@ public class Screen_login extends Activity  implements OnClickListener{
     	}
 	}
 	
+	/**
+     * Verify the login info against the txt file.
+     *
+     * @param	username, password
+     *
+     * @return	null
+     */
 	public void verifyLoginInfo (String un, String pw) {
 		if(usersList != null) {
 			for (int i = 0; i < usersList.size(); i++) {
@@ -109,7 +129,7 @@ public class Screen_login extends Activity  implements OnClickListener{
 		}
 	}
 
-	/*
+	/**
 	 * Load data from files
 	 */
 	public void loadData() {

@@ -12,10 +12,20 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+/**
+ * A class with methods to deal with most of the features needed to
+ * display the splash screen.
+ */
 public class Splash_screen extends Activity {
 
-	private static final int SPLASH_PAUSE = 2000;
+	/**
+	 * Instance variables for Splash_screen.
+	 */
+	private static final int SPLASH_PAUSE = 2000; 
 	
+	/**
+	 * Check if splash screen was successful.
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

@@ -36,16 +36,22 @@ import java.lang.Boolean;
 import java.lang.Long;
 
 
-
+/**
+ * A class with methods to deal with most of the other classes and contains 
+ * methods needed to create nurse, get patient information and log out user.
+ */
 public class MainActivity extends Activity implements OnClickListener{
 
+	/**
+     * Instance variables of MainActivity.
+     */
 	private static final int TYPE_CLASS_NUMBER = 2;
 
 	public static Nurse nurse = new Nurse();
 	
 	private AlertDialog.Builder alertDialogSearchPatient;
 	
-	private Button buttonNewPatient, buttonSearchPatient, buttonListOfPatients, buttonLoadData;
+	private Button buttonNewPatient, buttonSearchPatient, buttonListOfPatients, buttonLoadData, buttonSaveData;
 	private EditText editTextSearchHealthCardNumber;
 	
 	private String userType;
@@ -65,13 +71,15 @@ public class MainActivity extends Activity implements OnClickListener{
         buttonListOfPatients = (Button) findViewById(R.id.buttonMainListOfPatients);
         buttonNewPatient = (Button) findViewById(R.id.buttonMainNewPatient);
         buttonLoadData = (Button) findViewById(R.id.buttonMainLoadData);
+        buttonSaveData = (Button) findViewById(R.id.buttonMainSaveData);
         
         buttonSearchPatient.setOnClickListener(this);
         buttonListOfPatients.setOnClickListener(this);
         buttonNewPatient.setOnClickListener(this);
         buttonLoadData.setOnClickListener(this);
+        buttonSaveData.setOnClickListener(this);
         
-        /*
+        /**
          * set up the main screen according to the user data
          */
         Intent intent = this.getIntent();
@@ -89,11 +97,15 @@ public class MainActivity extends Activity implements OnClickListener{
         	userImage.setImageResource(R.drawable.nurse_logo);
         }
     }
-
+    
+    /**
+     * Logout account when back button pressed.
+     */
     @Override
 	public void onBackPressed() {
 		logoutAccount();
 	}
+    
 
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -101,7 +113,7 @@ public class MainActivity extends Activity implements OnClickListener{
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-
+	
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -120,6 +132,13 @@ public class MainActivity extends Activity implements OnClickListener{
         return super.onOptionsItemSelected(item);
     }
     
+    /**
+     * On click, alert dialogs, and get patient info.
+     *
+     * @param	view
+     *
+     * @return	screen action
+     */    
     @Override
 	public void onClick(View v) {
     	/*
@@ -209,9 +228,57 @@ public class MainActivity extends Activity implements OnClickListener{
 			});
 			alertDialog.show();
 		}
+		
+		if(v == buttonSaveData) {
+			// Save new info into the database
+	        ArrayList<Patient> listPatients = nurse.listOfPatients();
+	        for(int i=0; i < listPatients.size(); i++) {
+	            if(!(patientData.patientExists(listPatients.get(i).getHealthCardNumber()))) {
+	                patientData.insertPatient(listPatients.get(i).getHealthCardNumber(),
+	                                          listPatients.get(i).getName(),
+	                                          listPatients.get(i).getBirthdate());
+	            }
+	        }
+
+	        for(int j=0; j < listPatients.size(); j++) {
+	            for(int k=0; k < listPatients.get(j).getListOfCondition().size(); k++) {
+	                if(!(patientData.conditionExists(listPatients.get(j).getHealthCardNumber(),
+	                    listPatients.get(j).getListOfCondition().get(k).getTime()))) {
+	                    Condition c = listPatients.get(j).getListOfCondition().get(k);
+	                    patientData.insertCondition(listPatients.get(j).getHealthCardNumber(),
+	                                                c.getSymptoms(), c.getSystolic(), c.getDiastolic(),
+	                                                c.getTemperature(), c.getHeartRate(), c.getTime(),
+	                                                c.getArrivalDate(), c.getSeenByDoctor());
+	                }
+	            }
+	        }
+
+	        for(int l=0; l < listPatients.size(); l++) {
+	            Patient prescripPatient = listPatients.get(l);
+	            for(int prescripIndex=0; prescripIndex < prescripPatient.getListOfPrescription().size(); prescripIndex++) {
+	                System.out.println("one is here");
+	                if(!(patientData.prescriptionExists(prescripPatient.getHealthCardNumber(),
+	                     prescripPatient.getListOfPrescription().get(prescripIndex).getMedication(),
+	                     prescripPatient.getListOfPrescription().get(prescripIndex).getDatePrescription()))) {
+
+	                Prescription pre = prescripPatient.getListOfPrescription().get(prescripIndex);
+	                patientData.insertPrescription(prescripPatient.getHealthCardNumber(),
+	                                               pre.getMedication(),
+	                                               pre.getInstruction(),
+	                                               pre.getDatePrescription());
+	                }
+	            }
+	        }
+		}
 	}
-
-
+    
+    /**
+     * On activity, perform tasks for requesting, and showing result.
+     *
+     * @param	request code, result code, data.
+     *
+     * @return	null
+     */
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
@@ -226,9 +293,13 @@ public class MainActivity extends Activity implements OnClickListener{
 		}
 	}
 	
-	/*
-	 * Load data from files
-	 */
+	/**
+     * Load data from files.
+     *
+     * @param	null
+     *
+     * @return	null
+     */
 	public void loadData() {
         Cursor patientDb = patientData.getAllRecordsPatients();
 
@@ -335,6 +406,13 @@ public class MainActivity extends Activity implements OnClickListener{
         }
     }
 	
+	/**
+     * Load external storage.
+     *
+     * @param	null
+     *
+     * @return	null
+     */
 	public void loadDataExternalStorage() {
 	}
 	
@@ -357,46 +435,14 @@ public class MainActivity extends Activity implements OnClickListener{
 	    return false;
 	}
 	
+	/**
+     * Log out account.
+     *
+     * @param	null
+     *
+     * @return	null
+     */
 	public void logoutAccount() {
-        // Save new info into the database
-        ArrayList<Patient> listPatients = nurse.listOfPatients();
-        for(int i=0; i < listPatients.size(); i++) {
-            if(!(patientData.patientExists(listPatients.get(i).getHealthCardNumber()))) {
-                patientData.insertPatient(listPatients.get(i).getHealthCardNumber(),
-                                          listPatients.get(i).getName(),
-                                          listPatients.get(i).getBirthdate());
-            }
-        }
-
-        for(int j=0; j < listPatients.size(); j++) {
-            for(int k=0; k < listPatients.get(j).getListOfCondition().size(); k++) {
-                if(!(patientData.conditionExists(listPatients.get(j).getHealthCardNumber(),
-                    listPatients.get(j).getListOfCondition().get(k).getTime()))) {
-                    Condition c = listPatients.get(j).getListOfCondition().get(k);
-                    patientData.insertCondition(listPatients.get(j).getHealthCardNumber(),
-                                                c.getSymptoms(), c.getSystolic(), c.getDiastolic(),
-                                                c.getTemperature(), c.getHeartRate(), c.getTime(),
-                                                c.getArrivalDate(), c.getSeenByDoctor());
-                }
-            }
-        }
-
-        for(int l=0; l < listPatients.size(); l++) {
-            Patient prescripPatient = listPatients.get(l);
-            for(int prescripIndex=0; prescripIndex < prescripPatient.getListOfPrescription().size(); prescripIndex++) {
-                System.out.println("one is here");
-                if(!(patientData.prescriptionExists(prescripPatient.getHealthCardNumber(),
-                     prescripPatient.getListOfPrescription().get(prescripIndex).getMedication(),
-                     prescripPatient.getListOfPrescription().get(prescripIndex).getDatePrescription()))) {
-
-                Prescription pre = prescripPatient.getListOfPrescription().get(prescripIndex);
-                patientData.insertPrescription(prescripPatient.getHealthCardNumber(),
-                                               pre.getMedication(),
-                                               pre.getInstruction(),
-                                               pre.getDatePrescription());
-                }
-            }
-        }
 
 		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
 		alertDialog.setMessage(R.string.message_logout);

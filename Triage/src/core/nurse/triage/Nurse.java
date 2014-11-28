@@ -1,10 +1,12 @@
 package core.nurse.triage;
-/*
- * @author  Deivid Cavalcante da Silva
+
+/**
+ * This class is responsible for handling instances of Patient calling the
+ * recording of patient data and updating the personal data.
+ * 
  * @version 1.0.2
  * @date    2014-11-08
  */
-
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -17,12 +19,15 @@ public class Nurse implements Serializable
 	
 	ListOfPatients listOfPatients;
     
+	/**
+     * Constructor for objects of class Nurse
+     */
     public Nurse() {
         listOfPatients = new ListOfPatients();
     }
     
     /**
-     * Add a new patient
+     * Add a new patient.
      * 
      * @param		health card number
      * @param		name
@@ -45,7 +50,7 @@ public class Nurse implements Serializable
     }
     
     /**
-     * Add new patient p
+     * Add new patient p.
      * 
      * @param		patient p
      * @return		boolean true if it was added
@@ -66,7 +71,7 @@ public class Nurse implements Serializable
     }
     
     /**
-     * Return patient's information of a patient who matches a health card number
+     * Return patient's information of a patient who matches a health card number.
      * 
      * @param healthCardNumber
      * @return
@@ -81,7 +86,7 @@ public class Nurse implements Serializable
      */
     
     /**
-     * Record the list of patient
+     * Record the list of patient.
      * 
      * @param		null
      * @return		data of patients to write on a file
@@ -92,7 +97,7 @@ public class Nurse implements Serializable
     }
     
     /**
-     * Record the list of condition
+     * Record the list of condition.
      * 
      * @param		null
      * @return		data of condition to write on a file
@@ -114,9 +119,10 @@ public class Nurse implements Serializable
     }
     
     /**
-     * Organize the condition of all patients after reading data from a file
+     * Organize the condition of all patients after reading data from a file.
      * 
      * @param data
+     * @return null
      */
     public void readConditionsFromFile(String data){
         InputOutputController ioc = new InputOutputController(listOfPatients);
@@ -126,25 +132,27 @@ public class Nurse implements Serializable
     //********************************************************
     
     /**
-     * Getter List of Patients
+     * Getter List of Patients.
      * 
-     * @return
+     * @param	null
+     * @return	ListOfPatients
      */
     public ListOfPatients getListOfPatients() {
     	return this.listOfPatients;
     }
     
     /**
-     * Setter ArrayList of patients
+     * Setter ArrayList of patients.
      * 
      * @param listOfPatients
+     * @return	null
      */
     public void setListOfPatients(ArrayList<Patient> listOfPatients) {
     	this.listOfPatients.setListOfPatients(listOfPatients);
     }
     
     /**
-     * return a list of patients
+     * return a list of patients.
      * 
      * @param		null
      * @return      list of patients
@@ -154,7 +162,7 @@ public class Nurse implements Serializable
     }
     
     /**
-     * Search for the list of conditions through the health card number
+     * Search for the list of conditions through the health card number.
      * 
      * @param		health card number
      * @return		arraylist of conditions
@@ -172,7 +180,7 @@ public class Nurse implements Serializable
     }
     
     /**
-     * Set array of conditions for one specific patient that matches the health card number
+     * Set array of conditions for one specific patient that matches the health card number.
      * 
      * @param		health card number
      * @param		array conditions
@@ -188,7 +196,7 @@ public class Nurse implements Serializable
     
     
     /**
-     * Search for the list of prescription through the health card number
+     * Search for the list of prescription through the health card number.
      * 
      * @param		health card number
      * @return		arraylist of conditions
@@ -206,7 +214,7 @@ public class Nurse implements Serializable
     }
     
     /**
-     * Set array of prescriptions for one specific patient that matches the health card number
+     * Set array of prescriptions for one specific patient that matches the health card number.
      * 
      * @param		health card number
      * @param		array conditions

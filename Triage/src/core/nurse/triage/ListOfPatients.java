@@ -1,9 +1,10 @@
 package core.nurse.triage;
 
-/*
- * @author  Deivid Cavalcante da Silva
- * @version 1.0.4
- * @date    2014-11-26
+/**
+ * This class is responsible for forming a list of patients.
+ * 
+ * @version 1.0.3
+ * @date    2014-11-08
  */
 
 import java.io.Serializable;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 
 public class ListOfPatients implements Serializable
 {
+	// instance variables
     private ArrayList<Patient> listOfPatients;
     
     public ListOfPatients() {
@@ -38,10 +40,10 @@ public class ListOfPatients implements Serializable
     }
     
     /**
-     * Return a patient that matches the health card number
+     * Create a new patient object.
      * 
-     * @param		health card number
-     * @return		patient
+     * @param  p   the patient object
+     * @return     null
      */
     public Patient viewPatientInfo(String healthCardNumber){
         Patient tmp = new Patient();
@@ -57,18 +59,20 @@ public class ListOfPatients implements Serializable
     }
     
     /**
-     * Getter List of Patients
+     * Return the entire list of patients.
      * 
-     * @return		listOfPatients
+     * @param	null
+     * @return	listOfPatients
      */
     public ArrayList<Patient> getListOfPatients() {
 		return listOfPatients;
 	}
 
 	/**
-     * Setter List of Patients
+     * Setter List of Patients.
      * 
      * @param listOfPatients
+     * @return void
      */
     public void setListOfPatients(ArrayList<Patient> listOfPatients) {
     	this.listOfPatients = listOfPatients;
