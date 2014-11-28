@@ -159,8 +159,8 @@ public class Nurse implements Serializable
      * @param		health card number
      * @return		arraylist of conditions
      */
-    public ArrayList conditionsOfPatient(String healthCardNumber) {
-        ArrayList tmp = new ArrayList();
+    public ArrayList<Condition> conditionsOfPatient(String healthCardNumber) {
+        ArrayList<Condition> tmp = new ArrayList();
         
         for(int i = 0; i < listOfPatients.size(); i++) {
             if(healthCardNumber.equals(listOfPatients.get(i).getHealthCardNumber())) {

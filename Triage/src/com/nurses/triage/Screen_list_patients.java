@@ -9,10 +9,13 @@ import com.example.triage.R.id;
 import com.example.triage.R.layout;
 import com.example.triage.R.menu;
 
+import core.nurse.triage.Condition;
 import core.nurse.triage.ListOfPatients;
 import core.nurse.triage.Patient;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -102,7 +105,7 @@ public class Screen_list_patients extends Activity {
 		
 		ListView lv = (ListView) findViewById(R.id.listViewListPatientsList);
 		
-		ArrayList<String> patients = new ArrayList<String>();
+		final ArrayList<String> patients = new ArrayList<String>();
 		for (int i = listPatients.size() - 1; i >= 0; i--) {
 			if (listPatients.get(i).getListOfCondition().size() > 0) {
 				if (listPatients.get(i).getListOfCondition().get(listPatients.get(i).getListOfCondition().size() - 1).getSeenByDoctor() != true) {
@@ -120,7 +123,50 @@ public class Screen_list_patients extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
-				// TODO Auto-generated method stub
+				String[] infoPatient = patients.get(arg2).toString().split(",");
+				AlertDialog.Builder ald = new AlertDialog.Builder(Screen_list_patients.this);
+				ald.setTitle(infoPatient[1] + '\n' + "Urgency: " + com.nurses.triage.MainActivity.nurse.viewPatientInfo(infoPatient[0]).urgency());
+				
+				ald.setMessage(com.nurses.triage.MainActivity.nurse.conditionsOfPatient(infoPatient[0]).get(com.nurses.triage.MainActivity.nurse.conditionsOfPatient(infoPatient[0]).size() - 1).toString2());
+				ald.show();
+				
+			}
+		});
+	}
+	
+public void timeArrivalSetUpListView () { //To Implement
+		
+		Collections.sort(listPatients, new Comparator<Patient>() {
+			@Override
+			public int compare(Patient p1, Patient p2)
+			{
+				Integer p1Urgency = p1.urgency();
+				Integer p2Urgency = p2.urgency();
+				return  p1Urgency.compareTo(p2Urgency);
+			}
+		});
+		
+		ListView lv = (ListView) findViewById(R.id.listViewListPatientsList);
+		
+		final ArrayList<String> patients = new ArrayList<String>();
+		for (int i = listPatients.size() - 1; i >= 0; i--) {
+			if (listPatients.get(i).getListOfCondition().size() > 0) {
+				if (listPatients.get(i).getListOfCondition().get(listPatients.get(i).getListOfCondition().size() - 1).getSeenByDoctor() != true) {
+					String tmp = listPatients.get(i).toString2();
+					patients.add(tmp);
+				}
+			}
+			
+		}
+		
+		ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, patients);
+		lv.setAdapter(adapter);
+		lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				
 				
 			}
 		});
