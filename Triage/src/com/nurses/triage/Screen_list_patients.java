@@ -52,15 +52,11 @@ public class Screen_list_patients extends Activity {
 
 			@Override
 			public void onCheckedChanged(RadioGroup arg0, int arg1) {
-				switch (arg1) {
-				case R.id.radioButtonListPatientsOrderByUrgency:
-					Log.i("Deivd T", "1");
+				if(arg1 == R.id.radioButtonListPatientsOrderByUrgency) {
 					urgencySetUpListView();
-					break;
-				case R.id.radioButtonListPatientsOrderByTime:
-					Log.i("Deivd T", "2");
+				}
+				else {
 					arrivalTimeSetUpListView();
-					break;
 				}
 			}
 		});
