@@ -9,6 +9,8 @@ import com.example.triage.R;
 
 import core.nurse.triage.Nurse;
 import core.nurse.triage.Patient;
+import core.nurse.triage.Condition;
+import core.nurse.triage.Prescription;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -27,6 +29,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.database.Cursor;
+import java.util.ArrayList;
+import java.lang.Integer;
+import java.lang.Boolean;
+import java.lang.Long;
+
 
 
 public class MainActivity extends Activity implements OnClickListener{
@@ -42,13 +50,16 @@ public class MainActivity extends Activity implements OnClickListener{
 	
 	private String userType;
 	private String username;
+
+    private DataHandler patientData;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-        
+        patientData = new DataHandler(this);
+        patientData.getDB();
         
         buttonSearchPatient = (Button) findViewById(R.id.buttonMainSearchPatient);
         buttonListOfPatients = (Button) findViewById(R.id.buttonMainListOfPatients);
@@ -219,26 +230,110 @@ public class MainActivity extends Activity implements OnClickListener{
 	 * Load data from files
 	 */
 	public void loadData() {
-		StringBuilder dataOnFile = new StringBuilder();
-		InputStream inputStream = getResources().openRawResource(R.raw.patient_records);
-	        try {
-	            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-	            ;
-	            String line;
-	            while ((line = reader.readLine()) != null) {
-	            	dataOnFile.append(line);
-	            	dataOnFile.append('\n');
-	            }
-	            reader.close();
+        Cursor patientDb = patientData.getAllRecordsPatients();
 
-	        }
-	        catch(IOException e) {
-	        	Log.e("Error", "file not found");
-	        }
-	        
-	        //Log.i("Deivid testando", dataOnFile.toString());
-	        nurse.readPatientsFromFile(dataOnFile.toString());
-	}
+        if(patientDb.getCount() == 0) {
+            StringBuilder storedData = new StringBuilder();
+            InputStream inputStream = getResources().openRawResource(R.raw.patient_records);
+                try {
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        storedData.append(line);
+                        storedData.append('\n');
+                    }
+                    reader.close();
+                    System.out.println(storedData.toString());
+
+                }
+                catch(IOException e) {
+                    Log.e("Error", "file not found");
+                }
+            nurse.readPatientsFromFile(storedData.toString());
+                
+                //Log.i("Deivid testando", storedData.toString());
+        }
+        else{
+            patientDb.moveToFirst();
+            ArrayList<Patient> patientList = new ArrayList<Patient>();
+            for(int i = 0; i < patientDb.getCount(); i++){
+                Patient p = new Patient(patientDb.getString(patientDb.getColumnIndex("healthNumber")),
+                                patientDb.getString(patientDb.getColumnIndex("name")),
+                                patientDb.getString(patientDb.getColumnIndex("birthdate")));
+                patientList.add(p);
+                patientDb.moveToNext();
+            }
+            nurse.setListOfPatients(patientList);
+        }
+
+        Cursor conditionDb = patientData.getAllRecordsConditions();
+        conditionDb.moveToFirst();
+        for(int k = 0; k < nurse.getListOfPatients().size(); k++){
+            ArrayList<Condition> conditionsList = new ArrayList<Condition>();
+            Patient q = nurse.getListOfPatients().get(k);
+            // System.out.println(q.getHealthCardNumber() + " is the patient, currently looking for conditions...");
+            for(int j = 0; j < conditionDb.getCount(); j++) {
+                if(conditionDb.getString(conditionDb.getColumnIndex("healthNumber")).equals(q.getHealthCardNumber())) {
+                // System.out.println("Found a condition attached to health number " + conditionDb.getString(conditionDb.getColumnIndex("healthNumber")));
+                    Condition c = new Condition(
+                               conditionDb.getString(conditionDb.getColumnIndex("symptoms")),
+                               Float.parseFloat(conditionDb.getString(conditionDb.getColumnIndex("temperature"))),
+                               Integer.parseInt(conditionDb.getString(conditionDb.getColumnIndex("diastolic"))),
+                               Integer.parseInt(conditionDb.getString(conditionDb.getColumnIndex("systolic"))),
+                               Integer.parseInt(conditionDb.getString(conditionDb.getColumnIndex("heartRate"))),
+                               conditionDb.getString(conditionDb.getColumnIndex("arrival_date")),
+                               Boolean.parseBoolean(conditionDb.getString(conditionDb.getColumnIndex("seen_by_doctor"))),
+                               Long.parseLong(conditionDb.getString(conditionDb.getColumnIndex("time"))));
+                    conditionsList.add(c);
+
+
+                }
+                conditionDb.moveToNext();
+            }
+            // System.out.println("for the health number " + q.getHealthCardNumber() + " we have " + conditionsList.size() + "conditions");
+            // ArrayList<Condition> temp = new ArrayList<Condition>();
+            // for(int indexCondition = 0; indexCondition < conditionsList.size(); indexCondition++){
+            //     temp.add
+            // }
+            nurse.setArrayConditionPatient(q.getHealthCardNumber(), conditionsList);
+            // System.out.println(q.getListOfCondition().size());
+            // System.out.println(q.getListOfCondition().size());
+            conditionDb.moveToFirst();
+    	}
+
+        Cursor prescriptionDb = patientData.getAllRecordsPrescriptions();
+        System.out.println(prescriptionDb.getCount());
+        prescriptionDb.moveToFirst();
+        for(int k = 0; k < nurse.getListOfPatients().size(); k++){
+            ArrayList<Prescription> prescriptionList = new ArrayList<Prescription>();
+            Patient q = nurse.getListOfPatients().get(k);
+            // System.out.println(q.getHealthCardNumber() + " is the patient, currently looking for conditions...");
+            for(int j = 0; j < prescriptionDb.getCount(); j++) {
+
+                if(prescriptionDb.getString(prescriptionDb.getColumnIndex("healthNumber")).equals(q.getHealthCardNumber())) {
+                // System.out.println("Found a condition attached to health number " + prescriptionDb.getString(prescriptionDb.getColumnIndex("healthNumber")));
+                    Prescription myPre = new Prescription(prescriptionDb.getString(prescriptionDb.getColumnIndex("medication")),
+                                                         prescriptionDb.getString(prescriptionDb.getColumnIndex("instruction")));
+                    myPre.setDatePrescription(prescriptionDb.getString(prescriptionDb.getColumnIndex("time")));
+
+                    prescriptionList.add(myPre);
+
+                }
+                prescriptionDb.moveToNext();
+            }
+            // System.out.println("for the health number " + q.getHealthCardNumber() + " we have " + conditionsList.size() + "conditions");
+            // ArrayList<Condition> temp = new ArrayList<Condition>();
+            // for(int indexCondition = 0; indexCondition < conditionsList.size(); indexCondition++){
+            //     temp.add
+            // }
+            System.out.println("Found " + prescriptionList.size() + " prescriptions");
+            nurse.setArrayPrescriptionPatient(q.getHealthCardNumber(), prescriptionList);
+            System.out.println(q.getListOfPrescription().size());
+            // System.out.println(q.getListOfCondition().size());
+            // System.out.println(q.getListOfCondition().size());
+            prescriptionDb.moveToFirst();
+        }
+    }
 	
 	public void loadDataExternalStorage() {
 	}
@@ -263,6 +358,46 @@ public class MainActivity extends Activity implements OnClickListener{
 	}
 	
 	public void logoutAccount() {
+        // Save new info into the database
+        ArrayList<Patient> listPatients = nurse.listOfPatients();
+        for(int i=0; i < listPatients.size(); i++) {
+            if(!(patientData.patientExists(listPatients.get(i).getHealthCardNumber()))) {
+                patientData.insertPatient(listPatients.get(i).getHealthCardNumber(),
+                                          listPatients.get(i).getName(),
+                                          listPatients.get(i).getBirthdate());
+            }
+        }
+
+        for(int j=0; j < listPatients.size(); j++) {
+            for(int k=0; k < listPatients.get(j).getListOfCondition().size(); k++) {
+                if(!(patientData.conditionExists(listPatients.get(j).getHealthCardNumber(),
+                    listPatients.get(j).getListOfCondition().get(k).getTime()))) {
+                    Condition c = listPatients.get(j).getListOfCondition().get(k);
+                    patientData.insertCondition(listPatients.get(j).getHealthCardNumber(),
+                                                c.getSymptoms(), c.getSystolic(), c.getDiastolic(),
+                                                c.getTemperature(), c.getHeartRate(), c.getTime(),
+                                                c.getArrivalDate(), c.getSeenByDoctor());
+                }
+            }
+        }
+
+        for(int l=0; l < listPatients.size(); l++) {
+            Patient prescripPatient = listPatients.get(l);
+            for(int prescripIndex=0; prescripIndex < prescripPatient.getListOfPrescription().size(); prescripIndex++) {
+                System.out.println("one is here");
+                if(!(patientData.prescriptionExists(prescripPatient.getHealthCardNumber(),
+                     prescripPatient.getListOfPrescription().get(prescripIndex).getMedication(),
+                     prescripPatient.getListOfPrescription().get(prescripIndex).getDatePrescription()))) {
+
+                Prescription pre = prescripPatient.getListOfPrescription().get(prescripIndex);
+                patientData.insertPrescription(prescripPatient.getHealthCardNumber(),
+                                               pre.getMedication(),
+                                               pre.getInstruction(),
+                                               pre.getDatePrescription());
+                }
+            }
+        }
+
 		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
 		alertDialog.setMessage(R.string.message_logout);
 		alertDialog.setIcon(R.drawable.logoff_button);
