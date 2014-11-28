@@ -137,7 +137,7 @@
                 android:layout_gravity="left"
                 android:minWidth="@dimen/text_medium_size"
                 android:paddingTop="15dp"
-                android:text="@string/date"
+                android:text="@string/date_label"
                 android:textColor="@color/color_background_2"
                 android:textSize="@dimen/text_medium_size" />
 

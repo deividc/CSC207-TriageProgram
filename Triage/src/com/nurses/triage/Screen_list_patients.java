@@ -1,8 +1,12 @@
 package com.nurses.triage;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 
 import com.example.triage.R;
 import com.example.triage.R.id;
@@ -43,9 +47,20 @@ public class Screen_list_patients extends Activity {
 		orderUrgency = (RadioButton) findViewById(R.id.radioButtonListPatientsOrderByUrgency);
 		orderUrgency.setOnClickListener(new View.OnClickListener() {
 			
+			
 			@Override
 			public void onClick(View v) {
 				urgencySetUpListView();
+				
+			}
+		});
+		
+		orderTime = (RadioButton) findViewById(R.id.radioButtonListPatientsOrderByTime);
+		orderTime.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				arrivalTimeSetUpListView();
 				
 			}
 		});
@@ -91,7 +106,7 @@ public class Screen_list_patients extends Activity {
 		lv.setAdapter(adapter);
 	}
 	
-	public void urgencySetUpListView () { //To Implement
+	public void urgencySetUpListView () {
 		
 		Collections.sort(listPatients, new Comparator<Patient>() {
 			@Override
@@ -134,22 +149,36 @@ public class Screen_list_patients extends Activity {
 		});
 	}
 	
-public void timeArrivalSetUpListView () { //To Implement
+public void arrivalTimeSetUpListView() {
 		
 		Collections.sort(listPatients, new Comparator<Patient>() {
 			@Override
 			public int compare(Patient p1, Patient p2)
 			{
-				Integer p1Urgency = p1.urgency();
-				Integer p2Urgency = p2.urgency();
-				return  p1Urgency.compareTo(p2Urgency);
+				int comparison = -1;
+				if (p1.getListOfCondition().size() > 0 && p2.getListOfCondition().size() > 0) {
+					if (p1.getListOfCondition().get(p1.getListOfCondition().size() - 1).getSeenByDoctor() != true && p2.getListOfCondition().get(p2.getListOfCondition().size() - 1).getSeenByDoctor() != true) {
+						SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+						try {
+							Date infoArrivalTimeP1 = format.parse(p1.getListOfCondition().get(p1.getListOfCondition().size() - 1).getArrivalDate());
+							Date infoArrivalTimeP2 = format.parse(p2.getListOfCondition().get(p2.getListOfCondition().size() - 1).getArrivalDate());
+							comparison = infoArrivalTimeP1.compareTo(infoArrivalTimeP2);
+						} catch (ParseException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+					}
+				}
+				
+				return  comparison;
 			}
 		});
 		
 		ListView lv = (ListView) findViewById(R.id.listViewListPatientsList);
 		
 		final ArrayList<String> patients = new ArrayList<String>();
-		for (int i = listPatients.size() - 1; i >= 0; i--) {
+		for (int i = 0; i < listPatients.size(); i++) {
 			if (listPatients.get(i).getListOfCondition().size() > 0) {
 				if (listPatients.get(i).getListOfCondition().get(listPatients.get(i).getListOfCondition().size() - 1).getSeenByDoctor() != true) {
 					String tmp = listPatients.get(i).toString2();
@@ -166,7 +195,12 @@ public void timeArrivalSetUpListView () { //To Implement
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
+				String[] infoPatient = patients.get(arg2).toString().split(",");
+				AlertDialog.Builder ald = new AlertDialog.Builder(Screen_list_patients.this);
+				ald.setTitle(infoPatient[1] + '\n' + "Urgency: " + com.nurses.triage.MainActivity.nurse.viewPatientInfo(infoPatient[0]).urgency());
 				
+				ald.setMessage(com.nurses.triage.MainActivity.nurse.conditionsOfPatient(infoPatient[0]).get(com.nurses.triage.MainActivity.nurse.conditionsOfPatient(infoPatient[0]).size() - 1).toString2());
+				ald.show();
 				
 			}
 		});
