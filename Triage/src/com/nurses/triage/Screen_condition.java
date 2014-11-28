@@ -29,7 +29,7 @@ public class Screen_condition extends Activity implements OnClickListener {
 	private EditText symptoms, temperature, bloodPressureSystolic, bloodPressureDiastolic, heartRate;
 	private CheckBox seenByDoctor;
 	
-	private String year, month, day, hour, minute;
+	private String year, month, day, hour, minute, second;
 	private int y, m, d;
 	private long time;
 	private boolean patientSeenByDoctor;
@@ -115,6 +115,7 @@ public class Screen_condition extends Activity implements OnClickListener {
 		
 		hour = dt.getHour24();
 		minute = dt.getMinute();
+		second = dt.getSecond();
 		year = dt.getYear();
 		month = dt.getMonth();
 		day = dt.getDay();
@@ -129,7 +130,7 @@ public class Screen_condition extends Activity implements OnClickListener {
 	 */
 	public void setCurrentDate() {
 		TextView timeNow = (TextView) findViewById(R.id.textViewConditionDate);
-		timeNow.setText(month + "-" + day + "-" + year + "		" + hour + ":" + minute);
+		timeNow.setText(month + "-" + day + "-" + year + " " + hour + ":" + minute + ":" + second);
 	}
 	
 	@Override

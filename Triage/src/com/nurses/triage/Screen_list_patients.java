@@ -22,6 +22,7 @@ import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,6 +30,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 
 public class Screen_list_patients extends Activity {
 
@@ -44,24 +47,21 @@ public class Screen_list_patients extends Activity {
 		ListOfPatients lop = (ListOfPatients) intent.getSerializableExtra("List of Patients");
 		listPatients = lop.getListOfPatients();
 		
-		orderUrgency = (RadioButton) findViewById(R.id.radioButtonListPatientsOrderByUrgency);
-		orderUrgency.setOnClickListener(new View.OnClickListener() {
-			
-			
+		RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioGroupListPatientOrdering); 
+		radioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
 			@Override
-			public void onClick(View v) {
-				urgencySetUpListView();
-				
-			}
-		});
-		
-		orderTime = (RadioButton) findViewById(R.id.radioButtonListPatientsOrderByTime);
-		orderTime.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				arrivalTimeSetUpListView();
-				
+			public void onCheckedChanged(RadioGroup arg0, int arg1) {
+				switch (arg1) {
+				case R.id.radioButtonListPatientsOrderByUrgency:
+					Log.i("Deivd T", "1");
+					urgencySetUpListView();
+					break;
+				case R.id.radioButtonListPatientsOrderByTime:
+					Log.i("Deivd T", "2");
+					arrivalTimeSetUpListView();
+					break;
+				}
 			}
 		});
 		
@@ -158,7 +158,7 @@ public void arrivalTimeSetUpListView() {
 				int comparison = -1;
 				if (p1.getListOfCondition().size() > 0 && p2.getListOfCondition().size() > 0) {
 					if (p1.getListOfCondition().get(p1.getListOfCondition().size() - 1).getSeenByDoctor() != true && p2.getListOfCondition().get(p2.getListOfCondition().size() - 1).getSeenByDoctor() != true) {
-						SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+						SimpleDateFormat format = new SimpleDateFormat("MM-dd-yyyy hh:mm:ss");
 						try {
 							Date infoArrivalTimeP1 = format.parse(p1.getListOfCondition().get(p1.getListOfCondition().size() - 1).getArrivalDate());
 							Date infoArrivalTimeP2 = format.parse(p2.getListOfCondition().get(p2.getListOfCondition().size() - 1).getArrivalDate());
@@ -178,7 +178,7 @@ public void arrivalTimeSetUpListView() {
 		ListView lv = (ListView) findViewById(R.id.listViewListPatientsList);
 		
 		final ArrayList<String> patients = new ArrayList<String>();
-		for (int i = 0; i < listPatients.size(); i++) {
+		for (int i = listPatients.size() - 1; i >= 0 ; i--) {
 			if (listPatients.get(i).getListOfCondition().size() > 0) {
 				if (listPatients.get(i).getListOfCondition().get(listPatients.get(i).getListOfCondition().size() - 1).getSeenByDoctor() != true) {
 					String tmp = listPatients.get(i).toString2();
